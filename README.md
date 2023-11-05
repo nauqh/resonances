@@ -8,7 +8,7 @@
 
 ## About the project
 
-In the contemporary era of digital music consumption, music enthusiasts are presented with an abundance of musical content. However, within this expansive repository, the task of discovering the optimal tunes has been proved to be both gratifying and challenging. Our project since then was conceived with a dedicated commitment to directly address this challenge with the aim of constructing an innovative and highly effective Music Recommendation System which harnesses the combination of pre-existing data provided by music streaming platforms and cutting-edge technologies encompassing recommender engines and state-of-the-art large language models.
+In the contemporary era of digital music consumption, music enthusiasts are presented with an abundance of musical content. However, within this expansive repository, the task of discovering the optimal tunes has been proved to be both gratifying and challenging. Our project since then was initiated with a dedicated commitment to directly address this challenge with the aim of constructing an innovative and effective Music Recommendation System which harnesses the combination of pre-existing data provided by music streaming platforms and temporary technologies encompassing recommender engines and state-of-the-art large language models.
 
 <img  width="500" src="shelf.jpeg">
 
