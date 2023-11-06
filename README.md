@@ -21,4 +21,4 @@ The challenge ran from January to July 2018, and received 1,467 submissions from
 
 ## Data Management
 
-<img  width="500" src="Components.png">
+<img  width="1000" src="Components.png">
