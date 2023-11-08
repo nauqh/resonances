@@ -60,9 +60,7 @@ The motivation is to find words that are not only important in each document but
 
 ### 1. Content-based Filtering
 
-[Content-based Filtering](https://developers.google.com/machine-learning/recommendation/content-based/basics) is a recommender technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
-
-<img  width="300" src="contentbase.webp">
+Content-based Filtering is a recommender technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
