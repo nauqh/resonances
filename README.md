@@ -84,4 +84,4 @@ In addition to providing song recommendations tailored to the user preferences, 
 
 The primary objective of the **Music Taste Analysis** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
-<img  width="800" src="./img/musictaste.png">
+<img  width="500" src="./img/musictaste.png">
