@@ -35,6 +35,8 @@ Additional details about the data can be accessed via the [Spotify Developer](ht
 
 ### 2. Storage 
 
+<img  width="1000" src="./img/storage.png">
+
 Following the extraction process, the acquired data will be subsequently loaded into a centralized database for further processing, which includes transformation into a machine-readable format. As outlined in the preceding section, the data obtained from the Spotify API comprises three primary categories:
 - **Artist data** encompasses comprehensive information pertaining to the performing artist, including but not limited to genres, popularity, images, and external urls.
 - **Song metadata** contains a diverse set of attributes related to the song, encompassing details such as genres, album information, release date, and popularity.
@@ -73,3 +75,5 @@ A specialized data pipeline has been crafted to serve this objective, structured
 Following this, the system engages in a filtering process to remove URIs that are already present within the database. Subsequently, user playlist undergoes transformation into a unified vector of quantitative values, achieved through the application of mean summarization.
 
 The resultant vector obtained here acts as a test point for the **K-Nearest Neighbors** algorithm. This allows us to calculate distances between the playlist vector and other songs in the dataset. The top neighbors are then chosen and ranked in ascending order. It's important to highlight that the data point closest to the input features receives the highest rank. If users provide specific audio features, the system will exclusively use these attributes for generating recommendations using the KNN algorithm.
+
+### 3. Music Taste Analysis
