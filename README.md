@@ -22,3 +22,7 @@ The challenge ran from January to July 2018, and received 1,467 submissions from
 ## Data Management
 
 <img  width="1000" src="Components.png">
+
+The project's primary focus is on refining the Spotify Million Playlist Dataset by employing a meticulous data cleaning process to extract approximately 600,000 unique track identifiers (URIs). These URIs serve as the foundation for interfacing with the Spotify API to retrieve both audio characteristics and associated metadata for each track, enabling the development of a recommendation system tailored to individual user preferences. 
+
+In our project, we have opted not to employ the complete original dataset for training the recommendation engine due to limitations and inconsistencies in the JSON format. As a result, we have devised a comprehensive solution for creating a customized dataset, leveraging the Million Playlist Dataset as its core. This process involves the initial extraction of all song URLs, followed by a thorough data aggregation and cleaning process aimed at isolating unique URIs and eliminating any duplications.
