@@ -58,6 +58,8 @@ The motivation is to find words that are not only important in each document but
 
 ## Recommendation Engine
 
-### Content-based Filtering
+### 1. Content-based Filtering
 
 Content-based Filtering leverages the distinctive features of each item to find similar items. Through the assignment of a similarity score, recommendations can be generated based on the degree of resemblance to other items within the dataset. In the context of Spotify playlists, this methodology involves an analysis of song features such as loudness, tempo, among others, within a given playlist to compute an aggregate score. Subsequently, a number of top similar songs will be recommended that aligns closely with the playlist's aggregate score, yet is absent from the original playlist.
+
+<img  width="500" src="contentbase.webp">
