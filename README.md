@@ -23,6 +23,14 @@ The challenge ran from January to July 2018, and received 1,467 submissions from
 
 <img  width="1000" src="Components.png">
 
-The project's primary focus is on refining the Spotify Million Playlist Dataset by employing a meticulous data cleaning process to extract approximately 600,000 unique track identifiers (URIs). These URIs serve as the foundation for interfacing with the Spotify API to retrieve both audio characteristics and associated metadata for each track, enabling the development of a recommendation system tailored to individual user preferences. 
+### 1. Extraction
 
-In our project, we have opted not to employ the complete original dataset for training the recommendation engine due to limitations and inconsistencies in the JSON format. As a result, we have devised a comprehensive solution for creating a customized dataset, leveraging the Million Playlist Dataset as its core. This process involves the initial extraction of all song URLs, followed by a thorough data aggregation and cleaning process aimed at isolating unique URIs and eliminating any duplications.
+Our project revolves around refining the Spotify Million Playlist Dataset. We achieve this by meticulously cleaning the data, resulting in approximately 600,000 unique track identifiers (URIs). These URIs form the bedrock for interfacing with the Spotify API, allowing us to retrieve both audio characteristics and associated metadata for each track. This, in turn, enables us to develop a recommendation system finely tuned to individual user preferences.
+
+Rather than utilizing the complete original dataset for training our recommendation engine, we've chosen a different approach due to limitations and inconsistencies in the JSON format. Instead, we've crafted a comprehensive solution that revolves around creating a customized dataset, with the Million Playlist Dataset at its core. This process involves the initial extraction of all song URLs, followed by a meticulous data aggregation and cleaning process. The goal here is to isolate unique URIs while eliminating any duplications.
+
+Through this meticulous approach, we gather essential audio features and pertinent song metadata, which includes artist and album details. This carefully curated dataset will serve as the cornerstone of our recommendation engine, ensuring that users receive highly relevant results through our interface. 
+
+More information on the data can be found through [Spotify Developer](https://developer.spotify.com/documentation/web-api)
+
+### 2. Storage and Retrieval
