@@ -31,6 +31,6 @@ Rather than utilizing the complete original dataset for training our recommendat
 
 Through this meticulous approach, we gather essential audio features and pertinent song metadata, which includes artist and album details. This carefully curated dataset will serve as the cornerstone of our recommendation engine, ensuring that users receive highly relevant results through our interface. 
 
-More information on the data can be found through [Spotify Developer](https://developer.spotify.com/documentation/web-api)
+Additional details about the data can be accessed via the [Spotify Developer](https://developer.spotify.com/documentation/web-api) platform. The code for the extraction process can be found in the associated [repository](https://github.com/nauqh/Resonance).
 
 ### 2. Storage and Retrieval
