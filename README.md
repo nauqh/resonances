@@ -12,7 +12,7 @@ In the contemporary era of digital music consumption, music enthusiasts have unp
 
 Our project since then was initiated from a keen aspiration to directly address this challenge by contructing an innovative and efficient Music Recommendation System which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
 
-<img  width="500" src="shelf.jpeg">
+<img  width="500" src="./img/shelf.jpeg">
 
 ## Spotify Million Playlist Dataset
 The foundation of the recommendation engine will hinge upon the [Spotify Million Playlist](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge) dataset, a substantial corpus curated for the purpose of advancing research in music recommendations. Sampled from the over 4 billion public playlists on Spotify, this dataset of 1 million playlists consist of over 2 million unique tracks by nearly 300,000 artists, and represents the largest public dataset of music playlists in the world. The dataset includes public playlists created by US Spotify users between January 2010 and November 2017. 
@@ -21,7 +21,7 @@ The challenge ran from January to July 2018, and received 1,467 submissions from
 
 ## Data Management
 
-<img  width="1000" src="Components.png">
+<img  width="1000" src="./img/Components.png">
 
 ### 1. Extraction
 
@@ -52,7 +52,7 @@ In the context of recommendation systems, data normalization plays a crucial rol
 
 TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf), is a tool to quantify words in a set of documents. The goal of TF-IDF is to show the importance of a word in the documents and the corpus. The general formula for calculating TF-IDF score is:
 
-<img  width="1000" src="tfidf.webp">
+<img  width="1000" src="./img/tfidf.webp">
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
 
@@ -64,10 +64,8 @@ Content-based Filtering is a recommender technique that uses unique features of 
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
-<img  width="1000" src="knn.webp">
+<img  width="1000" src="./img/knn.webp">
 
 ### 2. Data pipeline
 
-A specialized data pipeline has been developed to cater to a specific objective, revolving around two primary use cases. In the first scenario, users can input their own Spotify playlists, initiating the pipeline with the retrieval of Spotify URIs, along with corresponding audio features and metadata. Subsequently, a filtering process ensues to remove URIs already present in the database. The user's playlist is then transformed into a single vector of quantitative values using a mean summarization function. This resulting vector acts as a test point for applying the K-Nearest Neighbors (KNN) algorithm, enabling the calculation of distances between the user's playlist vector and the remaining songs in the dataset. The top neighbors are then selected and ranked in ascending order, with the closest match receiving the highest rank.
-
-For cases where users opt to provide specific audio features as input, the system exclusively employs these attributes to generate recommendations using the KNN algorithm. To implement this approach, the widely-used Scikit-learn library offers an efficient framework for constructing the KNN model and returning the top-k results based on a given test point. The KNeighborsClassifier class within Scikit-learn encapsulates the KNN algorithm, serving as a versatile tool for both classification and regression tasks. By specifying the desired number of neighbors (k), the model effectively identifies the most similar instances within the feature space. This capability empowers the recommendation system to furnish users with a tailored selection of songs based on their specified preferences.
+A specialized data pipeline has been designed to fulfill such a specific objective, which is structured around two distinct use cases. For users opt to provide their own Spotify playlists as input, the pipeline commences with the retrieval of various Spotify URIs within the user's playlist, along with their corresponding audio features and metadata. Subsequently, the system undertakes a filtering process to eliminate URIs that already exist within the database. The user's playlist is then transformed into a singular vector of quantitative values, achieved through using summarize mean function.
