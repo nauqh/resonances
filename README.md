@@ -78,6 +78,28 @@ Following this, the system engages in a filtering process to remove URIs that ar
 
 The resultant vector obtained here acts as a test point for the **K-Nearest Neighbors** algorithm. This allows us to calculate distances between the playlist vector and other songs in the dataset. The top neighbors are then chosen and ranked in ascending order. It's important to highlight that the data point closest to the input features receives the highest rank. If users provide specific audio features, the system will exclusively use these attributes for generating recommendations using the KNN algorithm.
 
+```python
+def recommendation(self, playlist_vector: list, feature_repo: pd.DataFrame) -> pd.DataFrame:
+        '''
+        Generated recommendation based on songs in a specific playlist.
+
+        Args: 
+            df (dataframe): spotify dataframe
+            playlist_vector (series): summarized playlist feature (single vector)
+            repository (dataframe): feature set of songs that are not in the selected playlist
+
+        Returns: 
+            Top 10 recommendations for the playlist
+        '''
+        suggest = pd.DataFrame(feature_repo['id'])
+        suggest['sim'] = cosine_similarity(feature_repo.drop('id', axis=1).values,
+                                           playlist_vector.values.reshape(1, -1))[:, 0]
+
+        result = suggest.sort_values('sim', ascending=False).head(10)
+        result = result.reset_index(drop=True)
+        return result
+```
+
 ### 3. Music Taste Analysis
 
 In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
