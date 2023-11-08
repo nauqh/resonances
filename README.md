@@ -66,7 +66,7 @@ Content-based Filtering is a recommender technique that uses unique features of 
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
-<img  width="1000" src="./img/knn.webp">
+<img  width="800" src="./img/knn.webp">
 
 ### 2. Data Pipeline
 
