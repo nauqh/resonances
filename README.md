@@ -46,7 +46,7 @@ A critical aspect of preprocessing techniques employed in this procedure centers
 
 #### Data normalization
 
-In the context of recommendation systems, data normalization plays a crucial role in ensuring that relevant variables are consistently scaled, thereby facilitating precise computations. Specifically, in the case of numeric audio features data, normalization is imperative to establish a uniform basis for comparisons and to prevent potential distortions in recommendation outcomes. To this end, we have harnessed the capabilities of the MinMaxScaler() function from the scikit-learn library, a highly potent tool adept at automatically standardizing values within a defined range of 0 to 1. This process not only enhances the robustness of subsequent analysis but also facilitates the application of cosine similarity functions, a fundamental metric used in the later recommendation engine.
+In the context of recommendation systems, data normalization plays a crucial role in ensuring that relevant variables are consistently scaled, thereby facilitating precise computations. Specifically, in the case of numeric audio features data, normalization is imperative to establish a uniform basis for comparisons and to prevent potential distortions in recommendation outcomes. To this end, we have harnessed the capabilities of the **MinMaxScaler()** function from the scikit-learn library, a highly potent tool adept at automatically standardizing values within a defined range of 0 to 1. 
 
 #### Categorical data encoding
 
