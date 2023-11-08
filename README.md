@@ -62,4 +62,6 @@ The motivation is to find words that are not only important in each document but
 
 Content-based Filtering leverages the distinctive features of each item to find similar items. Through the assignment of a similarity score, recommendations can be generated based on the degree of resemblance to other items within the dataset. In the context of Spotify playlists, this methodology involves an analysis of song features such as loudness, tempo, among others, within a given playlist to compute an aggregate score. Subsequently, a number of top similar songs will be recommended that aligns closely with the playlist's aggregate score, yet is absent from the original playlist.
 
-<img  width="500" src="contentbase.webp">
+<img  width="300" src="contentbase.webp">
+
+The K-Nearest Neighbor (KNN) algorithm stands as a prevalent method within Content-based Filtering strategies employed in music recommendation systems. In this context, KNN operates by identifying a set number (K) of music tracks that are most similar to a user's current preferences. It achieves this by measuring the proximity of various music pieces based on features such as genre, tempo, instrumental arrangement, and even user behavior patterns. By leveraging this similarity metric, KNN can make accurate predictions about which songs a user might enjoy based on their historical interactions with the platform.
