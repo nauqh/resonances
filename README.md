@@ -79,3 +79,7 @@ Following this, the system engages in a filtering process to remove URIs that ar
 The resultant vector obtained here acts as a test point for the **K-Nearest Neighbors** algorithm. This allows us to calculate distances between the playlist vector and other songs in the dataset. The top neighbors are then chosen and ranked in ascending order. It's important to highlight that the data point closest to the input features receives the highest rank. If users provide specific audio features, the system will exclusively use these attributes for generating recommendations using the KNN algorithm.
 
 ### 3. Music Taste Analysis
+
+In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
+
+The primary objective of the **Music Taste Analysis** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
