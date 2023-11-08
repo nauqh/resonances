@@ -35,7 +35,7 @@ Additional details about the data can be accessed via the [Spotify Developer](ht
 
 ### 2. Storage 
 
-<img  width="1000" src="./img/storage.png">
+<img  width="800" src="./img/storage.png">
 
 Following the extraction process, the acquired data will be subsequently loaded into a centralized database for further processing, which includes transformation into a machine-readable format. As outlined in the preceding section, the data obtained from the Spotify API comprises three primary categories:
 - **Artist data** encompasses comprehensive information pertaining to the performing artist, including but not limited to genres, popularity, images, and external urls.
