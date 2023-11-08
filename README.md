@@ -4,13 +4,13 @@
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)
 
-**Update** (15 December 2022): View the web application here at [Resonance](https://resonances.streamlit.app/)
+**Update** (15 December 2022): View the web application here at [Resonance](https://nauqh.github.io/error.html)
 
 ## About the project
 
 In the contemporary era of digital music consumption, music enthusiasts have unparalleled access to a vast ocean of musical content. However, within these expansive collections, the need to discover the ideal tunes can be simultaneously delightful and difficult. 
 
-Our project since then was initiated from a keen aspiration to directly address this challenge with the aim of contructing an innovative and efficient Music Recommendation System which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
+Our project since then was initiated from a keen aspiration to directly address this challenge by contructing an innovative and efficient Music Recommendation System which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
 
 <img  width="500" src="shelf.jpeg">
 
