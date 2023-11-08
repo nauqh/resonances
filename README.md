@@ -60,7 +60,7 @@ The motivation is to find words that are not only important in each document but
 
 ### 1. Content-based Filtering
 
-Content-based Filtering leverages the distinctive features of each item to find similar items. Through the assignment of a similarity score, recommendations can be generated based on the degree of resemblance to other items within the dataset. In the context of Spotify playlists, this methodology involves an analysis of song features such as loudness, tempo, among others, within a given playlist to compute an aggregate score. Subsequently, a number of top similar songs will be recommended that aligns closely with the playlist's aggregate score, yet is absent from the original playlist.
+[Content-based Filtering](https://developers.google.com/machine-learning/recommendation/content-based/basics#:~:text=Content%2Dbased%20filtering%20uses%20item,previous%20actions%20or%20explicit%20feedback.) is a recommender technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
 
 <img  width="300" src="contentbase.webp">
 
