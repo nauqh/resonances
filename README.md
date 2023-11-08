@@ -65,3 +65,7 @@ The motivation is to find words that are not only important in each document but
 <img  width="300" src="contentbase.webp">
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
+
+<img  width="300" src="knn.webp">
+
+### 2. Data pipeline
