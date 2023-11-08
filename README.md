@@ -51,3 +51,5 @@ In the context of recommendation systems, data normalization plays a crucial rol
 #### Categorical data encoding
 
 TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf), is a tool to quantify words in a set of documents. The goal of TF-IDF is to show the importance of a word in the documents and the corpus. The general formula for calculating TF-IDF score is:
+
+<img  width="1000" src="tfidf.webp">
