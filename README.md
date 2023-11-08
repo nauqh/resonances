@@ -66,8 +66,10 @@ The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors
 
 <img  width="1000" src="./img/knn.webp">
 
-### 2. Data pipeline
+### 2. Data Pipeline
 
-A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user's playlist, accompanied by their corresponding audio features and metadata. Following this, the system engages in a filtering process to remove URIs that are already present within the database. Subsequently, user playlist undergoes transformation into a unified vector of quantitative values, achieved through the application of mean summarization.
+A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user playlist, accompanied by their corresponding audio features and metadata. 
+
+Following this, the system engages in a filtering process to remove URIs that are already present within the database. Subsequently, user playlist undergoes transformation into a unified vector of quantitative values, achieved through the application of mean summarization.
 
 The resultant vector obtained here acts as a test point for the **K-Nearest Neighbors** algorithm. This allows us to calculate distances between the playlist vector and other songs in the dataset. The top neighbors are then chosen and ranked in ascending order. It's important to highlight that the data point closest to the input features receives the highest rank. If users provide specific audio features, the system will exclusively use these attributes for generating recommendations using the KNN algorithm.
