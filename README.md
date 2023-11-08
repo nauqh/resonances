@@ -55,3 +55,9 @@ TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wik
 <img  width="1000" src="tfidf.webp">
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
+
+## Recommendation Engine
+
+### Content-based Filtering
+
+Content-based Filtering leverages the distinctive features of each item to find similar items. Through the assignment of a similarity score, recommendations can be generated based on the degree of resemblance to other items within the dataset. In the context of Spotify playlists, this methodology involves an analysis of song features such as loudness, tempo, among others, within a given playlist to compute an aggregate score. Subsequently, a number of top similar songs will be recommended that aligns closely with the playlist's aggregate score, yet is absent from the original playlist.
