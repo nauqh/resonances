@@ -17,8 +17,6 @@
   - [Extraction](#1-extraction)
   - [Storage](#2-storage)
   - [Transformation](#3-transformation)
-    - [Data normalization](#data-normalization)
-    - [Categorical data encoding](#categorical-data-encoding)
 - [Recommendation Engine](#recommendation-engine)
   - [Content-based Filtering](#1-content-based-filtering)
   - [Data Pipeline](#2-data-pipeline)
