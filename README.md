@@ -11,13 +11,20 @@
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
 
 ## Contents:
-
- - [About the project?](#about-the-project)
-    - [Components](#components)
- - [Spotify Million Playlist Dataset](#spotify-million-playlist-dataset)
- - [License](#license)
- - [Documentation](#documentation)
- - [Tutorials](#tutorials)
+- [🎧Resonance - A music recommendation system](#resonance---a-music-recommendation-system)
+  - [Contents:](#contents)
+  - [About the project](#about-the-project)
+  - [Spotify Million Playlist Dataset](#spotify-million-playlist-dataset)
+  - [Data Management](#data-management)
+    - [1. Extraction](#1-extraction)
+    - [2. Storage](#2-storage)
+    - [3. Transformation](#3-transformation)
+      - [Data normalization](#data-normalization)
+      - [Categorical data encoding](#categorical-data-encoding)
+  - [Recommendation Engine](#recommendation-engine)
+    - [1. Content-based Filtering](#1-content-based-filtering)
+    - [2. Data Pipeline](#2-data-pipeline)
+    - [3. Music Taste Analysis](#3-music-taste-analysis)
 
 ## About the project
 
