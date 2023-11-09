@@ -10,6 +10,15 @@
 
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
 
+## Contents:
+
+ - [About the project?](#about-the-project)
+    - [Components](#components)
+ - [Spotify Million Playlist Dataset](#spotify-million-playlist-dataset)
+ - [License](#license)
+ - [Documentation](#documentation)
+ - [Tutorials](#tutorials)
+
 ## About the project
 
 In the contemporary era of digital music consumption, music enthusiasts have unparalleled access to a vast ocean of musical content. However, within these expansive collections, the need to discover the ideal tunes can be simultaneously delightful and difficult. 
