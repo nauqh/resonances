@@ -11,7 +11,7 @@
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
 
 ## Contents   
-- [What is Resonance?](#about-the-project)
+[x] [What is Resonance?](#about-the-project)
 - [Spotify Million Playlist Dataset](#spotify-million-playlist-dataset)
 - [Data Management](#data-management)
   - [1. Extraction](#1-extraction)
