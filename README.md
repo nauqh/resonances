@@ -74,7 +74,7 @@ TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wik
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
 
-## Recommendation Engine
+## 🏭Recommendation Engine
 
 ### 1. Content-based Filtering
 
@@ -116,7 +116,7 @@ def recommendation(self, playlist_vector: list, feature_repo: pd.DataFrame) -> p
         return result
 ```
 
-### 3. 🎧Music Taste Analysis
+### 3. Music Taste Analysis
 
 In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
 
