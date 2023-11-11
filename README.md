@@ -3,15 +3,15 @@
 </div>
 
 <p align="center">
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=a594f9"></a> <br>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Made%20With-Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&colorB=0096c7"></a> <br>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white&colorB=52b788"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white&colorB=ff758f"></a>
-<a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Streamlit%20-%2300599C.svg?&style=for-the-badge&logo=streamlit&colorB=ff4d6d&logoColor=white"></a>
+<a href=""><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=ffdd00"></a> <br>
+<a href=""><img src="https://img.shields.io/badge/Made%20With-Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
+<a href=""><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8"></a>
+<a href=""><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&colorB=0096c7"></a> <br>
+<a href=""><img src="https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"></a>
+<a href=""><img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white&colorB=52b788"></a>
+<a href=""><img src="https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white"></a>
+<a href=""><img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white&colorB=ff758f"></a>
+<a href=""><img src="https://img.shields.io/badge/Streamlit%20-%2300599C.svg?&style=for-the-badge&logo=streamlit&colorB=ff4d6d&logoColor=white"></a>
 </p>
 
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
