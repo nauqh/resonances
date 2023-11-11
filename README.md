@@ -22,7 +22,7 @@
   - [Data Pipeline](#2-data-pipeline)
   - [Music Taste Analysis](#3-music-taste-analysis)
 
-## About the project
+## ✨About the project
 
 In the contemporary era of digital music consumption, music enthusiasts have unparalleled access to a vast ocean of musical content. However, within these expansive collections, the need to discover the ideal tunes can be simultaneously delightful and difficult. 
 
@@ -30,7 +30,7 @@ Our project since then was initiated from a keen aspiration to directly address 
 
 <img  width="500" src="./img/shelf.jpeg">
 
-## Spotify Million Playlist Dataset
+## 📝Spotify Million Playlist Dataset
 The foundation of the recommendation engine will hinge upon the [Spotify Million Playlist](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge) dataset, a substantial corpus curated for the purpose of advancing research in music recommendations. Sampled from the over 4 billion public playlists on Spotify, this dataset of 1 million playlists consist of over 2 million unique tracks by nearly 300,000 artists, and represents the largest public dataset of music playlists in the world. The dataset includes public playlists created by US Spotify users between January 2010 and November 2017. 
 
 The challenge ran from January to July 2018, and received 1,467 submissions from 410 teams. A summary of the challenge and the top scoring submissions was published in the [ACM Transactions on Intelligent Systems and Technology](https://dl.acm.org/doi/abs/10.1145/3344257).
@@ -123,3 +123,9 @@ In addition to providing song recommendations tailored to the user preferences, 
 The primary objective of the **Music Taste Analysis** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
 <img  width="500" src="./img/musictaste.png">
+
+## Contributors
+Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
+Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
+Adam Ye - [Novitix](https://github.com/novitix) 
+Ashton Sequeira
