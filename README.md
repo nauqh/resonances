@@ -1,4 +1,5 @@
-<h1 align="center">Resonance - A music recommendation system</h1> 
+<h5 align="center" style="font-size:60px;">Resonance</h5> 
+<h5 align="center" style="font-size:30px;">A music recommendation system</h5> 
 
 <p align="center">
 <a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=a594f9"></a> <br>
