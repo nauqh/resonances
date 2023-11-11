@@ -12,21 +12,7 @@
 <a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white"></a>
 </p>
 
-
-
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
-
-## Contents   
-- [What is Resonance?](#about-the-project)
-- [Spotify Million Playlist Dataset](#spotify-million-playlist-dataset)
-- [Data Management](#data-management)
-  - [Extraction](#1-extraction)
-  - [Storage](#2-storage)
-  - [Transformation](#3-transformation)
-- [Recommendation Engine](#recommendation-engine)
-  - [Content-based Filtering](#1-content-based-filtering)
-  - [Data Pipeline](#2-data-pipeline)
-  - [Music Taste Analysis](#3-music-taste-analysis)
 
 ## ✨About the project
 
