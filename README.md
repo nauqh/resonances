@@ -1,4 +1,4 @@
-# 🎧Resonance - A music recommendation system
+# Resonance - A music recommendation system
 
 ![Python](https://img.shields.io/badge/Made%20With-Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8)
