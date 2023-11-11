@@ -82,7 +82,9 @@ The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors
 
 A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user playlist, accompanied by their corresponding audio features and metadata. 
 
-<img  width="500" src="./img/input.png">
+<div align="center">
+  <img  width="500" src="./img/input.png">
+</div>
 
 Following this, the system engages in a filtering process to remove URIs that are already present within the database. Subsequently, user playlist undergoes transformation into a unified vector of quantitative values, achieved through the application of mean summarization.
 
@@ -116,7 +118,9 @@ In addition to providing song recommendations tailored to the user preferences, 
 
 The primary objective of the **Music Taste Analysis** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
-<img  width="500" src="./img/musictaste.png">
+<div align="center">
+  <img  width="500" src="./img/musictaste.png">
+</div>
 
 ## 🧑‍💻Contributors
 - Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
