@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-<a href=""><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=6f2dbd"></a> <br>
+<a href=""><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=7289DA"></a> <br>
 <a href=""><img src="https://img.shields.io/badge/Made%20With-Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
 <a href=""><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8"></a>
 <a href=""><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&colorB=0096c7"></a> <br>
