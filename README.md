@@ -35,7 +35,7 @@ The foundation of the recommendation engine will hinge upon the [Spotify Million
 
 The challenge ran from January to July 2018, and received 1,467 submissions from 410 teams. A summary of the challenge and the top scoring submissions was published in the [ACM Transactions on Intelligent Systems and Technology](https://dl.acm.org/doi/abs/10.1145/3344257).
 
-## Data Management
+## 🗂️Data Management
 
 <img  width="1000" src="./img/Components.png">
 
@@ -116,7 +116,7 @@ def recommendation(self, playlist_vector: list, feature_repo: pd.DataFrame) -> p
         return result
 ```
 
-### 3. Music Taste Analysis
+### 3. 🎧Music Taste Analysis
 
 In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
 
