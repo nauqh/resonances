@@ -125,7 +125,7 @@ The primary objective of the **Music Taste Analysis** engine is to evaluate user
 <img  width="500" src="./img/musictaste.png">
 
 ## Contributors
-[x] Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
-[x] Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
-[x] Adam Ye - [Novitix](https://github.com/novitix) 
-[x] Ashton Sequeira
+- Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
+- Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
+- Adam Ye - [Novitix](https://github.com/novitix) 
+- Ashton Sequeira
