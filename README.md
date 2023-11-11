@@ -1,4 +1,6 @@
-<img src="./img/logo.jpeg" width="500" align="center">
+<div align="center">
+  <img src="./img/logo.jpeg" width="500" align="center">
+</div>
 
 <p align="center">
 <a href="https://discord.gg/Dkg79tc"><img src="https://img.shields.io/badge/Latest%20Version-V1.1.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=a594f9"></a> <br>
