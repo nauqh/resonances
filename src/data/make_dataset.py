@@ -31,18 +31,18 @@ def process_slide(slide):
 
 
 if __name__ == '__main__':
-    # with open('./data/mpd.slice.0-999.json') as f:
-    #     js = json.load(f)
-    #     print(len(js['playlists']))
+    with open('./data/mpd.slice.0-999.json') as f:
+        js = json.load(f)
+        print(len(js['playlists']))
 
-    #     tracks = process_slide(js['playlists'])
-    #     tracks.to_csv('tracks.csv', index=False)
+        tracks = process_slide(js['playlists'])
+        tracks.to_csv('tracks.csv', index=False)
 
     import os
     from tqdm import tqdm
-    path = 'D:\Laboratory\Resonance 2.0\data'
+    path = 'D:/Study/Monash/FIT3162/Resonance/data'
     fnames = os.listdir(path)
-    # print(fnames)
+    print(fnames)
 
     all_dataframes = []
     for fname in tqdm(fnames[:5]):
