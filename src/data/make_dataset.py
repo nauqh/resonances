@@ -42,7 +42,6 @@ if __name__ == '__main__':
     for fname in tqdm(fnames[:5]):
         with open(os.path.join(path, fname)) as f:
             js = json.load(f)
-            playlists = js['playlists']
             tracks = process_slide(js['playlists'])
             all_dataframes.append(tracks)
 
