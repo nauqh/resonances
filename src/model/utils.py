@@ -51,31 +51,47 @@ def get_features(token: str, track_id: str) -> dict:
     return get(url, headers=headers).json()
 
 
-def extract_playlist(token: str, url: str) -> tuple[dict, pd.DataFrame, pd.DataFrame]:
-    playlist = get_playlist(token, url)
+def extract_tracks(playlist) -> pd.DataFrame:
+    tracks = []
+    for track in tqdm(playlist['tracks']['items']):
+        id, name, images, added_date, release_date, url, popularity = (
+            track['track']['id'],
+            track['track']['name'],
+            track['track']['album']['images'],
+            track['added_at'],
+            track['track']['album']['release_date'],
+            track['track']['external_urls']['spotify'],
+            track['track']['popularity']
+        )
+        artist = track['track']['artists'][0]['id']
+        features = get_features(token, id)
 
-    # Get tracks info as dataframe
-    features = []
+        tracks.append({
+            'id': id,
+            'name': name,
+            'images': images,
+            'added_date': added_date,
+            'release_date': release_date,
+            'url': url,
+            'artist': artist,
+            'popularity': popularity,
+            **features
+        })
+    return pd.DataFrame(tracks)
 
-    for track in tqdm((playlist['tracks']['items'])):
-        id = track['track']['id']
-        features.append(get_features(token, id))
 
-    feature_df = pd.DataFrame(features)
-
-    # Get artists info as dataframe
-    artist_ids = {track['track']['artists'][0]['id']
-                  for track in playlist['tracks']['items']}
-    artists = [get_artist(token, id) for id in tqdm(artist_ids)]
-    artist_df = pd.DataFrame(artists)
-
-    return playlist, artist_df, feature_df
+def extract_artists(df) -> pd.DataFrame:
+    ids = {row['artist'] for _, row in df.iterrows()}
+    artists = [get_artist(token, id) for id in tqdm(ids)]
+    return pd.DataFrame(artists)
 
 
 if __name__ == "__main__":
     token = get_token()
-    playlist_url = 'https://open.spotify.com/playlist/4mih0AxheCVcIQaIMf1YAK?si=345baf5504f14e24'
+    url = 'https://open.spotify.com/playlist/4mih0AxheCVcIQaIMf1YAK?si=345baf5504f14e24'
 
-    playlist, artists, features = extract_playlist(token, playlist_url)
+    playlist = get_playlist(token, url)
+    tracks = extract_tracks(playlist)
+    artists = extract_artists(tracks)
     artists.to_csv('artists.csv', index=False)
-    features.to_csv('features.csv', index=False)
+    tracks.to_csv('features.csv', index=False)
