@@ -1,33 +1,54 @@
 from data.make_dataset import to_csv
-from model.utils import get_token, get_features, get_artist
+from requests import get
+from model.utils import get_token, get_header, get_features, get_artist
 from pathlib import Path
 from tqdm import tqdm
 import pandas as pd
 
+
+def get_track(token: str, id: str):
+    url = f"https://api.spotify.com/v1/tracks/{id}"
+    headers = get_header(token)
+    track = get(url, headers=headers).json()
+
+    artist = track['artists'][0]['id']
+    features = get_features(token, id)
+
+    return pd.DataFrame([{
+        'id': id,
+        'name': track['name'],
+        'images': track['album']['images'],
+        'release_date': track['album']['release_date'],
+        'url': track['external_urls']['spotify'],
+        'artist': artist,
+        'popularity': track['popularity'],
+        **features
+    }])
+
+
 if __name__ == "__main__":
     # TODO: RAW JSON -> CSV SLIDE
-    base = Path('D:/Study/Monash/FIT3162/Resonance/data')
-    indir = base / 'raw'
-    outdir = base / 'processed'
+    # base = Path('D:/Study/Monash/FIT3162/Resonance/data')
+    # indir = base / 'raw'
+    # outdir = base / 'processed'
 
-    to_csv(indir, outdir)
+    # to_csv(indir, outdir)
 
     # TODO: CSV SLIDE -> ARTISTS, FEATURES
     slide = pd.read_csv(
         "D:/Study/Monash/FIT3162/Resonance/data/processed/mpd.slice.0-999.json.csv")
+    token = get_token()
 
     # Get tracks info as dataframe
     track_ids = slide['track_uri'].tolist()
-    tracks = [get_features(get_token(), id) for id in tqdm(track_ids[:30])]
-    track_df = pd.DataFrame(tracks)
+    data = [get_track(token, id) for id in tqdm(track_ids[:10])]
 
-    track_df.to_csv(
-        "D:/Study/Monash/FIT3162/Resonance/data/combine/tracks/sampletrack.csv", index=False)
+    pd.concat(data, ignore_index=True).to_csv(
+        "D:/Study/Monash/FIT3162/Resonance/data/combine/tracks.csv", index=False)
 
     # Get artists info as dataframe
-    artist_ids = list(set(slide['artist_uri'].tolist()))
-    artists = [get_artist(get_token(), id) for id in tqdm(artist_ids[:30])]
-    artist_df = pd.DataFrame(artists)
+    artist_ids = slide['artist_uri'].unique()[:10]
+    artists = [get_artist(token, artist_id) for artist_id in tqdm(artist_ids)]
 
-    artist_df.to_csv(
-        "D:/Study/Monash/FIT3162/Resonance/data/combine/artists/sampleartist.csv", index=False)
+    pd.DataFrame(artists).to_csv(
+        'D:/Study/Monash/FIT3162/Resonance/data/combine/artists.csv', index=False)
