@@ -3,8 +3,8 @@ from tqdm import tqdm
 import pandas as pd
 from requests import post, get
 
-client_id = ""
-client_secret = ""
+client_id = "41ebc65d020d4aa8be24bd1f97cbd9ed"
+client_secret = "62ceb3db85854f739c3fd9598504ecaf"
 
 
 def get_token():
