@@ -49,7 +49,10 @@ def to_csv(indir: str, outdir: str):
 
 
 if __name__ == '__main__':
-    indir = 'D:/Study/Monash/FIT3162/Resonance/data/raw'
-    outdir = 'D:/Study/Monash/FIT3162/Resonance/data/processed'
+    from pathlib import Path
+
+    base = Path('D:/Study/Monash/FIT3162/Resonance/data')
+    indir = base / 'raw'
+    outdir = base / 'processed'
 
     to_csv(indir, outdir)
