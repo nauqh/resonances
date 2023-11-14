@@ -4,6 +4,8 @@ Preprocess Spotify Million Playlist Dataset
 import pandas as pd
 import re
 import json
+import os
+from tqdm import tqdm
 
 
 def to_df(slide: dict) -> pd.DataFrame:
@@ -30,23 +32,24 @@ def to_df(slide: dict) -> pd.DataFrame:
     return tracks
 
 
-def process_repo():
-    ...
-
-
-if __name__ == '__main__':
-    import os
-    from tqdm import tqdm
-
-    path = 'D:/Study/Monash/FIT3162/Resonance/data/raw'
-    fnames = os.listdir(path)
-    # print(fnames)
+def to_csv(indir: str, outdir: str):
+    """
+    Turn slides in a directory into csv dataframe
+    """
+    fnames = os.listdir(indir)
+    print(fnames)
 
     for fname in tqdm(fnames):
-        with open(os.path.join(path, fname)) as f:
+        with open(os.path.join(indir, fname)) as f:
             js = json.load(f)
             tracks = to_df(js['playlists'])
 
-            output_path = os.path.join(
-                'D:/Study/Monash/FIT3162/Resonance/data/processed', f'{fname}.csv')
-            tracks.to_csv(output_path, index=False)
+            outpath = os.path.join(outdir, f'{fname}.csv')
+            tracks.to_csv(outpath, index=False)
+
+
+if __name__ == '__main__':
+    indir = 'D:/Study/Monash/FIT3162/Resonance/data/raw'
+    outdir = 'D:/Study/Monash/FIT3162/Resonance/data/processed'
+
+    to_csv(indir, outdir)
