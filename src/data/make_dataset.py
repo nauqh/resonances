@@ -6,7 +6,7 @@ import re
 import json
 
 
-def process_slide(slide):
+def process_slide(slide: dict) -> pd.DataFrame:
     """
     Turn a slide of playlists into csv
     """
@@ -30,20 +30,23 @@ def process_slide(slide):
     return tracks
 
 
+def process_repo():
+    ...
+
+
 if __name__ == '__main__':
     import os
     from tqdm import tqdm
 
-    path = 'D:/Study/Monash/FIT3162/Resonance/data'
+    path = 'D:/Study/Monash/FIT3162/Resonance/data/raw'
     fnames = os.listdir(path)
-    # print(fnames)
+    print(fnames)
 
-    all_dataframes = []
-    for fname in tqdm(fnames[:5]):
+    for fname in tqdm(fnames):
         with open(os.path.join(path, fname)) as f:
             js = json.load(f)
             tracks = process_slide(js['playlists'])
-            all_dataframes.append(tracks)
 
-    combined_dataframe = pd.concat(all_dataframes, ignore_index=True)
-    combined_dataframe.to_csv('alltracks.csv', index=False)
+            output_path = os.path.join(
+                'D:/Study/Monash/FIT3162/Resonance/data/processed', f'{fname}.csv')
+            tracks.to_csv(output_path, index=False)
