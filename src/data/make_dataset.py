@@ -6,9 +6,9 @@ import re
 import json
 
 
-def process_slide(slide: dict) -> pd.DataFrame:
+def to_df(slide: dict) -> pd.DataFrame:
     """
-    Turn a slide of playlists into csv
+    Turn a slide of playlists into dataframe
     """
     data = []
 
@@ -40,12 +40,12 @@ if __name__ == '__main__':
 
     path = 'D:/Study/Monash/FIT3162/Resonance/data/raw'
     fnames = os.listdir(path)
-    print(fnames)
+    # print(fnames)
 
     for fname in tqdm(fnames):
         with open(os.path.join(path, fname)) as f:
             js = json.load(f)
-            tracks = process_slide(js['playlists'])
+            tracks = to_df(js['playlists'])
 
             output_path = os.path.join(
                 'D:/Study/Monash/FIT3162/Resonance/data/processed', f'{fname}.csv')
