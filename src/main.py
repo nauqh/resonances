@@ -28,11 +28,11 @@ def get_track(token: str, id: str):
 
 if __name__ == "__main__":
     # TODO: RAW JSON -> CSV SLIDE
-    # base = Path('D:/Study/Monash/FIT3162/Resonance/data')
-    # indir = base / 'raw'
-    # outdir = base / 'processed'
+    base = Path('D:/Study/Monash/FIT3162/Resonance/data')
+    indir = base / 'raw'
+    outdir = base / 'processed'
 
-    # to_csv(indir, outdir)
+    to_csv(indir, outdir)
 
     # TODO: CSV SLIDE -> ARTISTS, FEATURES
     slide = pd.read_csv(
