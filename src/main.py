@@ -27,6 +27,9 @@ def get_track(token: str, id: str) -> pd.DataFrame:
 
 
 def process_slide(slide: pd.DataFrame, token: str, outdir: Path) -> None:
+    """
+    Process a slide into artists and tracks dataframe
+    """
     # Get tracks info as dataframe
     track_ids = slide['track_uri'].tolist()
     data = [get_track(token, id) for id in tqdm(track_ids[:10])]

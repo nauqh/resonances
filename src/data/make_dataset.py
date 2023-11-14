@@ -8,9 +8,9 @@ import os
 from tqdm import tqdm
 
 
-def to_df(slide: dict) -> pd.DataFrame:
+def _to_df(slide: dict) -> pd.DataFrame:
     """
-    Turn a slide of playlists into dataframe
+    Turn a json slide of playlists into dataframe
     """
     data = []
 
@@ -42,7 +42,7 @@ def to_csv(indir: str, outdir: str):
     for fname in tqdm(fnames):
         with open(os.path.join(indir, fname)) as f:
             js = json.load(f)
-            tracks = to_df(js['playlists'])
+            tracks = _to_df(js['playlists'])
 
             outpath = os.path.join(outdir, f'{fname}.csv')
             tracks.to_csv(outpath, index=False)
