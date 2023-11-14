@@ -1,6 +1,6 @@
 from data.make_dataset import to_csv
 from requests import get
-from model.utils import get_token, get_header, get_features, get_artist
+from utils import get_token, get_header, get_features, get_artist
 from pathlib import Path
 from tqdm import tqdm
 import pandas as pd
