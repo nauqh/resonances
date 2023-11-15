@@ -72,7 +72,7 @@ def _get_track(token: str, id: str) -> DataFrame:
     }])
 
 
-def csv_to_combine(path: str, token: str, outdir: Path) -> None:
+def csv_to_combine(path: str, token: str) -> None:
     """
     Process a slide into artists and tracks dataframe
     """

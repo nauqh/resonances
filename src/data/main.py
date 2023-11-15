@@ -21,4 +21,4 @@ if __name__ == "__main__":
     for fname in tqdm(fnames):
         print(f"\nProcess slide {fname}")
         path = os.path.join(processed, fname)
-        csv_to_combine(path, token, base)
+        csv_to_combine(path, token)
