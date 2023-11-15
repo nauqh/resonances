@@ -91,7 +91,9 @@ def csv_to_combine(path: str, token: str) -> None:
                for artist_id in tqdm(artist_ids)]
 
     # Combine into csv
-    t = fnamebase + '_tracks.csv'
-    pd.concat(data, ignore_index=True).to_csv(directory / t, index=False)
-    a = fnamebase + '_artists.csv'
-    pd.DataFrame(artists).to_csv(directory / a, index=False)
+    tracks_csv_path = directory / f"tracks/{fnamebase}_tracks.csv"
+    pd.concat(data, ignore_index=True).to_csv(
+        tracks_csv_path, index=False)
+
+    artists_csv_path = directory / f"artists/{fnamebase}_artists.csv"
+    pd.DataFrame(artists).to_csv(artists_csv_path, index=False)
