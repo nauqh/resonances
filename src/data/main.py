@@ -1,6 +1,6 @@
 from utils import get_token
 from pathlib import Path
-from make_dataset import to_csv, process_slide
+from make_dataset import raw_to_csv, process_slide
 import pandas as pd
 
 if __name__ == "__main__":
@@ -9,7 +9,7 @@ if __name__ == "__main__":
     indir = base / 'raw'
     outdir = base / 'processed'
 
-    to_csv(indir, outdir)
+    raw_to_csv(indir, outdir)
 
     # TODO: CSV SLIDE -> ARTISTS, FEATURES
     slide = pd.read_csv(

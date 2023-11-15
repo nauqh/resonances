@@ -35,7 +35,7 @@ def _to_df(slide: dict) -> pd.DataFrame:
     return tracks
 
 
-def to_csv(indir: str, outdir: str):
+def raw_to_csv(indir: str, outdir: str):
     """
     Turn slides in a directory into csv dataframe
     """
