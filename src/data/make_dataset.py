@@ -92,8 +92,6 @@ def csv_to_combine(path: str, token: str, outdir: Path) -> None:
 
     # Combine into csv
     t = fnamebase + '_tracks.csv'
-    pd.concat(data, ignore_index=True).to_csv(
-        directory / t, index=False)
+    pd.concat(data, ignore_index=True).to_csv(directory / t, index=False)
     a = fnamebase + '_artists.csv'
-    pd.DataFrame(artists).to_csv(
-        directory / a, index=False)
+    pd.DataFrame(artists).to_csv(directory / a, index=False)
