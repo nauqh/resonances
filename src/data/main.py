@@ -1,7 +1,6 @@
 from utils import get_token
 from pathlib import Path
 from make_dataset import raw_to_csv, csv_to_combine
-import pandas as pd
 from tqdm import tqdm
 import os
 
@@ -12,9 +11,9 @@ if __name__ == "__main__":
     processed = base / 'processed'
     combined = base / 'combined'
 
-    # raw_to_csv(raw, processed)
+    raw_to_csv(raw, processed)
 
-    # # TODO: CSV SLIDE -> ARTISTS, FEATURES
+    # TODO: CSV SLIDE -> ARTISTS, FEATURES
     token = get_token()
     fnames = os.listdir(processed)
 
