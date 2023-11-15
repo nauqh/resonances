@@ -72,10 +72,13 @@ def _get_track(token: str, id: str) -> DataFrame:
     }])
 
 
-def csv_to_combine(path: Path, token: str, outdir: Path) -> None:
+def csv_to_combine(path: str, token: str, outdir: Path) -> None:
     """
     Process a slide into artists and tracks dataframe
     """
+    directory = Path(path).parent.parent / 'combined'
+    fnamebase = os.path.basename(path)[:-9]
+
     slide = pd.read_csv(path)
 
     # Get tracks info as dataframe
@@ -88,7 +91,9 @@ def csv_to_combine(path: Path, token: str, outdir: Path) -> None:
                for artist_id in tqdm(artist_ids)]
 
     # Combine into csv
+    t = fnamebase + '_tracks.csv'
     pd.concat(data, ignore_index=True).to_csv(
-        outdir / 'combine/tracks.csv', index=False)
+        directory / t, index=False)
+    a = fnamebase + '_artists.csv'
     pd.DataFrame(artists).to_csv(
-        outdir / 'combine/artists.csv', index=False)
+        directory / a, index=False)

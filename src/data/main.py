@@ -19,6 +19,6 @@ if __name__ == "__main__":
     fnames = os.listdir(processed)
 
     for fname in tqdm(fnames):
-        print(f"Process slide {fname}")
+        print(f"\nProcess slide {fname}")
         path = os.path.join(processed, fname)
         csv_to_combine(path, token, base)
