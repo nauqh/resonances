@@ -48,6 +48,7 @@ def raw_to_csv(indir: str, outdir: str):
             js = json.load(f)
             tracks = _to_df(js['playlists'])
 
+            fname = fname[:-5]
             outpath = os.path.join(outdir, f'{fname}.csv')
             tracks.to_csv(outpath, index=False)
 
@@ -77,7 +78,7 @@ def csv_to_combine(path: str, token: str) -> None:
     Process a slide into artists and tracks dataframe
     """
     directory = Path(path).parent.parent / 'combined'
-    fnamebase = os.path.basename(path)[:-9]
+    fnamebase = os.path.basename(path)[:-4]
 
     slide = pd.read_csv(path)
 

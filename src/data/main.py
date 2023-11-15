@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     raw_to_csv(raw, processed)
 
-    # TODO: CSV SLIDE -> ARTISTS, FEATURES
+    # TODO: CSV SLIDE -> ARTISTS, TRACKS
     token = get_token()
     fnames = os.listdir(processed)
 
