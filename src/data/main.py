@@ -1,6 +1,6 @@
 from utils import get_token
 from pathlib import Path
-from make_dataset import raw_to_csv, process_slide
+from make_dataset import raw_to_csv, csv_to_combine
 import pandas as pd
 
 if __name__ == "__main__":
@@ -16,4 +16,4 @@ if __name__ == "__main__":
         "D:/Study/Monash/FIT3162/Resonance/data/processed/mpd.slice.0-999.json.csv")
     token = get_token()
 
-    process_slide(slide, token, base)
+    csv_to_combine(slide, token, base)

@@ -51,7 +51,7 @@ def raw_to_csv(indir: str, outdir: str):
             tracks.to_csv(outpath, index=False)
 
 
-def get_track(token: str, id: str) -> pd.DataFrame:
+def _get_track(token: str, id: str) -> pd.DataFrame:
     url = f"https://api.spotify.com/v1/tracks/{id}"
     headers = get_header(token)
     track = get(url, headers=headers).json()
@@ -71,13 +71,13 @@ def get_track(token: str, id: str) -> pd.DataFrame:
     }])
 
 
-def process_slide(slide: pd.DataFrame, token: str, outdir: Path) -> None:
+def csv_to_combine(slide: pd.DataFrame, token: str, outdir: Path) -> None:
     """
     Process a slide into artists and tracks dataframe
     """
     # Get tracks info as dataframe
     track_ids = slide['track_uri'].tolist()
-    data = [get_track(token, id) for id in tqdm(track_ids[:10])]
+    data = [_get_track(token, id) for id in tqdm(track_ids[:10])]
 
     pd.concat(data, ignore_index=True).to_csv(
         outdir / 'combine/tracks.csv', index=False)
