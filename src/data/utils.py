@@ -1,13 +1,14 @@
 import base64
 from tqdm import tqdm
 import pandas as pd
+from pandas import DataFrame
 from requests import post, get
 
 client_id = "41ebc65d020d4aa8be24bd1f97cbd9ed"
 client_secret = "62ceb3db85854f739c3fd9598504ecaf"
 
 
-def get_token():
+def get_token() -> str:
     auth_string = client_id + ":" + client_secret
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
@@ -51,7 +52,7 @@ def get_features(token: str, track_id: str) -> dict:
     return get(url, headers=headers).json()
 
 
-def extract_tracks(playlist) -> pd.DataFrame:
+def extract_tracks(playlist) -> DataFrame:
     tracks = []
     for track in tqdm(playlist['tracks']['items']):
         id, name, images, added_date, release_date, url, popularity = (
@@ -80,7 +81,7 @@ def extract_tracks(playlist) -> pd.DataFrame:
     return pd.DataFrame(tracks)
 
 
-def extract_artists(df) -> pd.DataFrame:
+def extract_artists(df) -> DataFrame:
     ids = {row['artist'] for _, row in df.iterrows()}
     artists = [get_artist(token, id) for id in tqdm(ids)]
     return pd.DataFrame(artists)

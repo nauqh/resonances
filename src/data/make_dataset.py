@@ -7,11 +7,12 @@ import json
 import os
 from tqdm import tqdm
 from requests import get
+from pandas import DataFrame
 from utils import get_header, get_features, get_artist
 from pathlib import Path
 
 
-def _to_df(slide: dict) -> pd.DataFrame:
+def _to_df(slide: dict) -> DataFrame:
     """
     Turn a json slide of playlists into dataframe
     """
@@ -51,7 +52,7 @@ def raw_to_csv(indir: str, outdir: str):
             tracks.to_csv(outpath, index=False)
 
 
-def _get_track(token: str, id: str) -> pd.DataFrame:
+def _get_track(token: str, id: str) -> DataFrame:
     url = f"https://api.spotify.com/v1/tracks/{id}"
     headers = get_header(token)
     track = get(url, headers=headers).json()
@@ -71,7 +72,7 @@ def _get_track(token: str, id: str) -> pd.DataFrame:
     }])
 
 
-def csv_to_combine(slide: pd.DataFrame, token: str, outdir: Path) -> None:
+def csv_to_combine(slide: DataFrame, token: str, outdir: Path) -> None:
     """
     Process a slide into artists and tracks dataframe
     """
