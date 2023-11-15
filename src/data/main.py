@@ -8,16 +8,17 @@ import os
 if __name__ == "__main__":
     # TODO: RAW JSON -> CSV SLIDE
     base = Path('D:/Study/Monash/FIT3162/Resonance/data')
-    indir = base / 'raw'
-    outdir = base / 'processed'
+    raw = base / 'raw'
+    processed = base / 'processed'
+    combined = base / 'combined'
 
-    # raw_to_csv(indir, outdir)
+    # raw_to_csv(raw, processed)
 
     # # TODO: CSV SLIDE -> ARTISTS, FEATURES
     token = get_token()
-    fnames = os.listdir(outdir)
+    fnames = os.listdir(processed)
 
     for fname in tqdm(fnames):
         print(f"Process slide {fname}")
-        slide = pd.read_csv(os.path.join(outdir, fname))
-        csv_to_combine(slide, token, base)
+        path = os.path.join(processed, fname)
+        csv_to_combine(path, token, base)
