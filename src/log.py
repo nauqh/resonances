@@ -11,9 +11,11 @@ fmttxt = logging.Formatter(
     "%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
 )
 
+# Screen log
 stdout = StreamHandler(stream=sys.stdout)
 stdout.setFormatter(fmtout)
 
+# Log file
 fileHandler = logging.FileHandler("logs.txt")
 fileHandler.setFormatter(fmttxt)
 
