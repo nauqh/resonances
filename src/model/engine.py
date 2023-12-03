@@ -3,13 +3,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 
 
-def select_cols(df: pd.DataFrame, cols_to_select: list):
+def __select_cols(df: pd.DataFrame, cols_to_select: list):
     if not set(cols_to_select).issubset(df.columns):
         raise ValueError("Columns to select do not exist in the DataFrame.")
     return df[cols_to_select]
 
 
-def ohe(df: pd.DataFrame, column: str) -> pd.DataFrame:
+def __ohe(df: pd.DataFrame, column: str) -> pd.DataFrame:
     return pd.get_dummies(df[column], prefix=column, dtype='int').reset_index(drop=True)
 
 
@@ -17,8 +17,8 @@ def create_feature_set(df, float_cols) -> pd.DataFrame:
     scaler = StandardScaler()
 
     # One-hot Encoding
-    key_ohe = ohe(df, 'key')
-    mode_ohe = ohe(df, 'mode')
+    key_ohe = __ohe(df, 'key')
+    mode_ohe = __ohe(df, 'mode')
 
     # Scale audio columns
     floats = df[float_cols].reset_index(drop=True)
@@ -42,24 +42,24 @@ def process(df):
               'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature']
 
     cols_to_select = ['id'] + floats + ['popularity']
-    df = select_cols(df, cols_to_select)
+    df = __select_cols(df, cols_to_select)
     new_df = create_feature_set(df, floats)
     return new_df.sort_values(by='popularity', ascending=False).reset_index(drop=True)
 
 
 class KNN():
-    def __init__(self, df: pd.DataFrame) -> None:
+    def __init__(self, basedf: pd.DataFrame) -> None:
         self.neigh = NearestNeighbors()
-        self.df = df
+        self.basedf = basedf
 
     def recommend(self, playlist: pd.DataFrame):
-        audio_feats = self.df.columns.difference(['id', 'popularity'])
+        audio_feats = self.basedf.columns.difference(['id', 'popularity'])
 
-        self.neigh.fit(self.df[audio_feats])
+        self.neigh.fit(self.basedf[audio_feats])
 
         n_neighbors = self.neigh.kneighbors(
-            playlist[audio_feats], n_neighbors=10, return_distance=False)[0]
-        return self.df.iloc[n_neighbors]['id'].tolist()
+            playlist[audio_feats], n_neighbors=9, return_distance=False)[0]
+        return self.basedf.iloc[n_neighbors]['id'].tolist()
 
 
 if __name__ == "__main__":
