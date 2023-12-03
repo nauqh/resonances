@@ -65,7 +65,6 @@ class KNN():
 if __name__ == "__main__":
     df = pd.read_csv(
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track_data.csv")
-    df = df[df['error'].isna()]
     newdf = process(df)
 
     playlist = pd.read_csv(
