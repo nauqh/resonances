@@ -6,7 +6,8 @@ import os
 
 if __name__ == "__main__":
     # TODO: RAW JSON -> CSV SLIDE
-    base = Path('D:/Study/Monash/FIT3162/Resonance/data')
+    base = Path(
+        'D:/Study/Monash/FIT3162/Resonance/data/Million Playlist Dataset')
     raw = base / 'raw'
     processed = base / 'processed'
     combined = base / 'combined'
