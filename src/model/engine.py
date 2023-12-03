@@ -74,4 +74,4 @@ if __name__ == "__main__":
 
     knn = KNN(newdf)
     recs = knn.recommend(playlist)
-    print(df[df['id'].isin(recs)])
+    print(df[df['id'].isin(recs)]['name'])
