@@ -1,28 +1,17 @@
-import sys
 import logging
-from colorlog import StreamHandler, ColoredFormatter
 
-
-fmtout = ColoredFormatter(
-    "%(white)s%(asctime)s | %(name)s | %(log_color)s%(levelname)s | %(log_color)s%(message)s %(blue)s(%(filename)s:%(lineno)d)"
-)
 
 fmttxt = logging.Formatter(
-    "%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
+    "[%(asctime)s %(name)s]: %(message)s", "%d %b %Y %H:%M:%S"
 )
 
-# Screen log
-stdout = StreamHandler(stream=sys.stdout)
-stdout.setFormatter(fmtout)
 
-# Log file
-fileHandler = logging.FileHandler("logs.txt")
+fileHandler = logging.FileHandler("data/logs.txt", mode='a')
 fileHandler.setFormatter(fmttxt)
 
 
 def get_logger(file: str):
     logger = logging.getLogger(file)
-    logger.addHandler(stdout)
     logger.addHandler(fileHandler)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     return logger
