@@ -4,7 +4,7 @@
 
 <p align="center">
 <a href=""><img src="https://img.shields.io/badge/Latest%20Version-V2.0.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=7289DA"></a> <br>
-<a href=""><img src="https://img.shields.io/badge/Made%20With-Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
+<a href=""><img src="https://img.shields.io/badge/Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
 <a href=""><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8"></a>
 <a href=""><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&colorB=0096c7"></a> <br>
 <a href=""><img src="https://img.shields.io/badge/OpenAI-74aa9c?style=for-the-badge&logo=openai&logoColor=white"></a>
@@ -16,7 +16,7 @@
 
 **Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
 
-## ✨About the project
+## ✨ About the project
 
 In the contemporary era of digital music consumption, music enthusiasts have unparalleled access to a vast ocean of musical content. However, within these expansive collections, the need to discover the ideal tunes can be simultaneously delightful and difficult. 
 
@@ -24,12 +24,12 @@ Our project since then was initiated from a keen aspiration to directly address 
 
 <img  width="500" src="./img/shelf.jpeg">
 
-## 📝Spotify Million Playlist Dataset
+## 📝 Spotify Million Playlist Dataset
 The foundation of the recommendation engine will hinge upon the [Spotify Million Playlist](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge) dataset, a substantial corpus curated for the purpose of advancing research in music recommendations. Sampled from the over 4 billion public playlists on Spotify, this dataset of 1 million playlists consist of over 2 million unique tracks by nearly 300,000 artists, and represents the largest public dataset of music playlists in the world. The dataset includes public playlists created by US Spotify users between January 2010 and November 2017. 
 
 The challenge ran from January to July 2018, and received 1,467 submissions from 410 teams. A summary of the challenge and the top scoring submissions was published in the [ACM Transactions on Intelligent Systems and Technology](https://dl.acm.org/doi/abs/10.1145/3344257).
 
-## 🗂️Data Management
+## 🗂️ Data Management
 
 <img  width="1000" src="./img/Components.png">
 
@@ -68,7 +68,7 @@ TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wik
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
 
-## 🏭Recommendation Engine
+## 🏭 Recommendation Engine
 
 ### 1. Content-based Filtering
 
@@ -122,7 +122,7 @@ The primary objective of the **Music Taste Analysis** engine is to evaluate user
   <img  width="500" src="./img/musictaste.png">
 </div>
 
-## 🧑‍💻Contributors
+## 🧑‍💻 Contributors
 - Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
 - Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
 - Adam Ye - [Novitix](https://github.com/novitix) 
