@@ -3,7 +3,7 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
-from ..config import settings
+from config import settings
 
 client_id = settings.ID
 client_secret = settings.SECRET
