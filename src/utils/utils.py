@@ -117,7 +117,6 @@ if __name__ == "__main__":
         'https://open.spotify.com/playlist/56r5qRUv3jSxADdmBkhcz7?si=2ed1488f90d44f2c',
         'https://open.spotify.com/playlist/4hMcqod7ERKJ9mtjgdimeV?si=623987b5c6764164'
     ]
-
     for year, url in zip(range(2000, 2024), tophits):
         playlist = get_playlist(token, url)
         tracks = extract_tracks(playlist)
