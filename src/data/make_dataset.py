@@ -8,7 +8,7 @@ import os
 from tqdm import tqdm
 from requests import get
 from pandas import DataFrame
-from utils import get_header, get_features, get_artist
+from utils import get_header, get_features, get_artist, get_token
 from pathlib import Path
 
 
@@ -98,3 +98,23 @@ def csv_to_combine(path: str, token: str) -> None:
 
     artists_csv_path = directory / f"artists/{fnamebase}_artists.csv"
     pd.DataFrame(artists).to_csv(artists_csv_path, index=False)
+
+
+if __name__ == "__main__":
+    # RAW JSON -> CSV SLIDE
+    base = Path(
+        'D:/Study/Monash/FIT3162/Resonance/data/Million Playlist Dataset')
+    raw = base / 'raw'
+    processed = base / 'processed'
+    combined = base / 'combined'
+
+    raw_to_csv(raw, processed)
+
+    # CSV SLIDE -> ARTISTS, TRACKS
+    token = get_token()
+    fnames = os.listdir(processed)
+
+    for fname in tqdm(fnames):
+        print(f"\nProcess slide {fname}")
+        path = os.path.join(processed, fname)
+        csv_to_combine(path, token)
