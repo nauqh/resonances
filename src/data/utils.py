@@ -3,9 +3,10 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
+from ..config import settings
 
-client_id = "41ebc65d020d4aa8be24bd1f97cbd9ed"
-client_secret = "62ceb3db85854f739c3fd9598504ecaf"
+client_id = settings.ID
+client_secret = settings.SECRET
 
 
 def get_token() -> str:
