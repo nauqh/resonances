@@ -14,7 +14,7 @@
 <a href=""><img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&colorB=ff4d6d"></a>
 </p>
 
-**Update** (9 November 2023): View the web application here at [Resonance](https://nauqh.github.io/error.html)
+**Update** (12 December 2023): Application under development at [Resonance](https://nauqh.github.io/error.html)
 
 ## ✨ About the project
 
