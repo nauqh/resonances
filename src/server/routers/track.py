@@ -1,5 +1,5 @@
 from fastapi import status, APIRouter
-from ...model.engine import process, KNN
+from ...engine import process, KNN
 import pandas as pd
 
 from ..schemas import Feature
