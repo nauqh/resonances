@@ -16,3 +16,5 @@ class Feature(BaseModel):
     duration_ms: int
     time_signature: int
     year: conint(ge=2000, le=2024)
+    id: int
+    popularity: int

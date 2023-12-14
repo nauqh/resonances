@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .routers import track
-from ..src.model.engine import KNN
 
 app = FastAPI(title='Resonance', version='2.0.0')
 

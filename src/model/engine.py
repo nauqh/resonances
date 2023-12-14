@@ -10,7 +10,15 @@ def __select_cols(df: pd.DataFrame, cols_to_select: list):
 
 
 def __ohe(df: pd.DataFrame, column: str) -> pd.DataFrame:
-    return pd.get_dummies(df[column], prefix=column, dtype='int').reset_index(drop=True)
+    if column == 'key':
+        ohe_columns = [f"{column}_{i}" for i in range(12)]
+    elif column == 'mode':
+        ohe_columns = [f"{column}_{i}" for i in range(2)]
+    else:
+        raise ValueError(
+            f"Unsupported column for one-hot encoding: {column}")
+
+    return pd.DataFrame(0, index=df.index, columns=ohe_columns, dtype='int')
 
 
 def create_feature_set(df, float_cols) -> pd.DataFrame:
@@ -64,11 +72,31 @@ class KNN():
 
 if __name__ == "__main__":
     df = pd.read_csv(
-        "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track_data.csv")
+        "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
     newdf = process(df)
 
-    playlist = pd.read_csv(
-        "D:/Laboratory/Study/Monash/FIT3162/Resonance/src/data/features.csv")
+    # playlist = pd.read_csv(
+    #     "D:/Laboratory/Study/Monash/FIT3162/Resonance/src/data/features.csv")
+    # playlist = process(playlist)
+    data = {
+        "danceability": 0.75,
+        "energy": 0.85,
+        "key": 2,
+        "loudness": -5.2,
+        "mode": 1,
+        "speechiness": 0.1,
+        "acousticness": 0.2,
+        "instrumentalness": 0.05,
+        "liveness": 0.6,
+        "valence": 0.9,
+        "tempo": 120.5,
+        "duration_ms": 240000,
+        "time_signature": 4,
+        'year': 2023,
+        'id': 000,
+        'popularity': 50
+    }
+    playlist = pd.DataFrame([data])
     playlist = process(playlist)
 
     knn = KNN(newdf)
