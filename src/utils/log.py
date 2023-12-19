@@ -1,6 +1,5 @@
 import logging
 
-
 fmttxt = logging.Formatter(
     "[%(asctime)s %(name)s]: %(message)s", "%d %b %Y %H:%M:%S"
 )

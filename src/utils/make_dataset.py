@@ -8,7 +8,7 @@ import os
 from tqdm import tqdm
 from requests import get
 from pandas import DataFrame
-from utils.utils import get_header, get_features, get_artist, get_token
+from .utils import get_header, get_features, get_artist, get_token
 from pathlib import Path
 
 

@@ -75,9 +75,6 @@ if __name__ == "__main__":
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
     newdf = process(df)
 
-    # playlist = pd.read_csv(
-    #     "D:/Laboratory/Study/Monash/FIT3162/Resonance/src/data/features.csv")
-    # playlist = process(playlist)
     data = {
         "danceability": 0.75,
         "energy": 0.85,
