@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-url = "http://127.0.0.1:8000/tracks"
+url = "http://127.0.0.1:8000/tracks/playlist"
 
 
 data = {
@@ -23,10 +23,17 @@ data = {
     'popularity': 50
 }
 
-
 resp = requests.post(url, json=data)
 recs = resp.json()
 print(recs)
+
+
+playlist = "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"
+playlist = "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"
+resp = requests.post(url, params={"url": playlist})
+recs = resp.json()
+print(recs)
+
 # df = pd.read_csv(
 #     "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
 

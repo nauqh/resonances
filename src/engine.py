@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import NearestNeighbors
-from utils.utils import get_token, get_playlist, extract_tracks
 
 
 def __select_cols(df: pd.DataFrame, cols_to_select: list):
@@ -79,11 +78,11 @@ if __name__ == "__main__":
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
     newdf = process(df)
 
-    token = get_token()
-    tracks = extract_tracks(get_playlist(
-        token, "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"))
-    playlist = process(tracks)
+    # token = get_token()
+    # tracks = extract_tracks(get_playlist(
+    #     token, "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"))
+    # playlist = process(tracks)
 
-    knn = KNN(newdf)
-    recs = knn.recommend(playlist)
-    print(df[df['id'].isin(recs)]['name'])
+    # knn = KNN(newdf)
+    # recs = knn.recommend(playlist)
+    # print(df[df['id'].isin(recs)]['name'])
