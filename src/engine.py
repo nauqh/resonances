@@ -1,6 +1,7 @@
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import NearestNeighbors
+from utils.utils import get_token, get_playlist, extract_tracks
 
 
 def __select_cols(df: pd.DataFrame, cols_to_select: list):
@@ -22,16 +23,19 @@ def __ohe(df: pd.DataFrame, column: str) -> pd.DataFrame:
 
 
 def create_feature_set(df, float_cols) -> pd.DataFrame:
-    scaler = StandardScaler()
+    scaler = MinMaxScaler()
 
     # One-hot Encoding
     key_ohe = __ohe(df, 'key')
     mode_ohe = __ohe(df, 'mode')
 
     # Scale audio columns
-    floats = df[float_cols].reset_index(drop=True)
-    floats_scaled = pd.DataFrame(
-        scaler.fit_transform(floats), columns=floats.columns)
+    if len(df) > 1:
+        floats = df[float_cols].reset_index(drop=True)
+        floats_scaled = pd.DataFrame(
+            scaler.fit_transform(floats), columns=floats.columns)
+    else:
+        floats_scaled = df[float_cols]
 
     # Concatenate all features
     final = pd.concat([floats_scaled, key_ohe, mode_ohe], axis=1)
@@ -52,7 +56,7 @@ def process(df):
     cols_to_select = ['id'] + floats + ['popularity']
     df = __select_cols(df, cols_to_select)
     new_df = create_feature_set(df, floats)
-    return new_df.sort_values(by='popularity', ascending=False).reset_index(drop=True)
+    return new_df
 
 
 class KNN():
@@ -66,7 +70,7 @@ class KNN():
         self.neigh.fit(self.basedf[audio_feats])
 
         n_neighbors = self.neigh.kneighbors(
-            playlist[audio_feats], n_neighbors=9, return_distance=False)[0]
+            playlist[audio_feats], n_neighbors=8, return_distance=False)[0]
         return self.basedf.iloc[n_neighbors]['id'].tolist()
 
 
@@ -75,26 +79,10 @@ if __name__ == "__main__":
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
     newdf = process(df)
 
-    data = {
-        "danceability": 0.75,
-        "energy": 0.85,
-        "key": 2,
-        "loudness": -5.2,
-        "mode": 1,
-        "speechiness": 0.1,
-        "acousticness": 0.2,
-        "instrumentalness": 0.05,
-        "liveness": 0.6,
-        "valence": 0.9,
-        "tempo": 120.5,
-        "duration_ms": 240000,
-        "time_signature": 4,
-        'year': 2023,
-        'id': 000,
-        'popularity': 50
-    }
-    playlist = pd.DataFrame([data])
-    playlist = process(playlist)
+    token = get_token()
+    tracks = extract_tracks(get_playlist(
+        token, "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"))
+    playlist = process(tracks)
 
     knn = KNN(newdf)
     recs = knn.recommend(playlist)

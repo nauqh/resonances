@@ -3,7 +3,7 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
-from config import settings
+from .config import settings
 
 client_id = settings.ID
 client_secret = settings.SECRET
@@ -54,6 +54,7 @@ def get_features(token: str, track_id: str) -> dict:
 
 
 def extract_tracks(playlist) -> DataFrame:
+    token = get_token()
     tracks = []
     for track in tqdm(playlist['tracks']['items']):
         id, name, images, added_date, release_date, url, popularity = (
@@ -83,6 +84,7 @@ def extract_tracks(playlist) -> DataFrame:
 
 
 def extract_artists(df) -> DataFrame:
+    token = get_token()
     ids = {row['artist'] for _, row in df.iterrows()}
     artists = [get_artist(token, id) for id in tqdm(ids)]
     return pd.DataFrame(artists)
