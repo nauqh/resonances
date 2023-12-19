@@ -22,4 +22,5 @@ def create_vector(track: Feature):
     knn = KNN(newdf)
     recs = knn.recommend(playlist)
 
-    return recs
+    # return recs
+    return df[df['id'].isin(recs)]['id'].tolist()

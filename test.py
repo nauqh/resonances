@@ -26,9 +26,9 @@ data = {
 
 resp = requests.post(url, json=data)
 recs = resp.json()
+print(recs)
+# df = pd.read_csv(
+#     "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
 
-df = pd.read_csv(
-    "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
-
-print(df[df['id'].isin(recs)]['name'])
-print(df[df['id'].isin(recs)]['id'].tolist())
+# print(df[df['id'].isin(recs)]['name'])
+# print(df[df['id'].isin(recs)]['id'].tolist())
