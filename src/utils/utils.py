@@ -93,7 +93,6 @@ def extract_artists(df) -> DataFrame:
 
 
 if __name__ == "__main__":
-
     tophits = [
         'https://open.spotify.com/playlist/37i9dQZF1DWUZv12GM5cFk?si=dfe480ed63ef4563',
         'https://open.spotify.com/playlist/37i9dQZF1DX9Ol4tZWPH6V?si=1ccf4ad83b514b57',

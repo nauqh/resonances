@@ -62,13 +62,14 @@ def process(df: pd.DataFrame) -> pd.DataFrame:
 class KNN():
     def __init__(self, basedf: pd.DataFrame) -> None:
         self.neigh = NearestNeighbors()
-        self.basedf = basedf
+        self.basedf = process(basedf)
 
     def train(self):
         audio_feats = self.basedf.columns.difference(['id', 'popularity'])
         self.neigh.fit(self.basedf[audio_feats])
 
     def recommend(self, playlist: pd.DataFrame):
+        playlist = process(playlist)
         audio_feats = self.basedf.columns.difference(['id', 'popularity'])
         n_neighbors = self.neigh.kneighbors(
             playlist[audio_feats], n_neighbors=8, return_distance=False)[0]
@@ -84,20 +85,11 @@ class KNN():
 
 
 if __name__ == "__main__":
-    # Initialize and save KNN model
+    # Initialize KNN model
     df = pd.read_csv(
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
-    newdf = process(df)
-    knn = KNN(newdf)
+    knn = KNN(df)
     knn.train()
 
     # Save the trained model to a file
     knn.save_model("src/server/engine.pkl")
-
-    # token = get_token()
-    # tracks = extract_tracks(get_playlist(
-    #     token, "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"))
-    # playlist = process(tracks)
-
-    # recs = knn.recommend(playlist)
-    # print(df[df['id'].isin(recs)]['name'])

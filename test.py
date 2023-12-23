@@ -1,41 +1,15 @@
 import requests
 import pandas as pd
+from src.utils.utils import get_playlist, extract_tracks
 
-url = "http://127.0.0.1:8000/tracks/playlist"
+df = pd.read_csv(
+    "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
+
+URL = "http://127.0.0.1:8000/tracks"
+playlist = "https://open.spotify.com/playlist/2xukpbxolEK8C9HdpANzZu?si=7177bd60db6f4271"
 
 
-data = {
-    "danceability": 0.75,
-    "energy": 0.85,
-    "key": 2,
-    "loudness": -5.2,
-    "mode": 1,
-    "speechiness": 0.1,
-    "acousticness": 0.2,
-    "instrumentalness": 0.05,
-    "liveness": 0.6,
-    "valence": 0.9,
-    "tempo": 120.5,
-    "duration_ms": 240000,
-    "time_signature": 4,
-    'year': 2023,
-    'id': 000,
-    'popularity': 50
-}
+resp = requests.post(URL, params={"url": playlist})
 
-resp = requests.post(url, json=data)
 recs = resp.json()
-print(recs)
-
-
-playlist = "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"
-playlist = "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"
-resp = requests.post(url, params={"url": playlist})
-recs = resp.json()
-print(recs)
-
-# df = pd.read_csv(
-#     "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
-
-# print(df[df['id'].isin(recs)]['name'])
-# print(df[df['id'].isin(recs)]['id'].tolist())
+print(df[df['id'].isin(recs)]['name'])
