@@ -32,7 +32,8 @@ def get_header(token: str):
 
 
 # TODO: EXTRACT
-def get_playlist(token: str, playlist_url: str) -> dict:
+def get_playlist(playlist_url: str) -> dict:
+    token = get_token()
     playlist_id = playlist_url.split("/")[-1].split("?")[0]
     url = f"https://api.spotify.com/v1/playlists/{playlist_id}"
     headers = get_header(token)
@@ -41,20 +42,21 @@ def get_playlist(token: str, playlist_url: str) -> dict:
     return resp
 
 
-def get_artist(token: str, artist_id: str) -> dict:
+def get_artist(artist_id: str) -> dict:
+    token = get_token()
     url = f"https://api.spotify.com/v1/artists/{artist_id}"
     headers = get_header(token)
     return get(url, headers=headers).json()
 
 
-def get_features(token: str, track_id: str) -> dict:
+def get_features(track_id: str) -> dict:
+    token = get_token()
     url = f"https://api.spotify.com/v1/audio-features/{track_id}"
     headers = get_header(token)
     return get(url, headers=headers).json()
 
 
 def extract_tracks(playlist) -> DataFrame:
-    token = get_token()
     tracks = []
     for track in tqdm(playlist['tracks']['items']):
         id, name, images, added_date, release_date, url, popularity = (
@@ -67,7 +69,7 @@ def extract_tracks(playlist) -> DataFrame:
             track['track']['popularity']
         )
         artist = track['track']['artists'][0]['id']
-        features = get_features(token, id)
+        features = get_features(id)
 
         tracks.append({
             'id': id,
@@ -91,7 +93,6 @@ def extract_artists(df) -> DataFrame:
 
 
 if __name__ == "__main__":
-    token = get_token()
 
     tophits = [
         'https://open.spotify.com/playlist/37i9dQZF1DWUZv12GM5cFk?si=dfe480ed63ef4563',
@@ -120,7 +121,7 @@ if __name__ == "__main__":
         'https://open.spotify.com/playlist/4hMcqod7ERKJ9mtjgdimeV?si=623987b5c6764164'
     ]
     for year, url in zip(range(2000, 2024), tophits):
-        playlist = get_playlist(token, url)
+        playlist = get_playlist(url)
         tracks = extract_tracks(playlist)
         artists = extract_artists(tracks)
         artists.to_csv(f'Spotify/artist/{year}_artists.csv', index=False)

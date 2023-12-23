@@ -1,9 +1,10 @@
 import pandas as pd
+import pickle
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import NearestNeighbors
 
 
-def __select_cols(df: pd.DataFrame, cols_to_select: list):
+def __select_cols(df: pd.DataFrame, cols_to_select: list) -> pd.DataFrame:
     if not set(cols_to_select).issubset(df.columns):
         raise ValueError("Columns to select do not exist in the DataFrame.")
     return df[cols_to_select]
@@ -21,7 +22,7 @@ def __ohe(df: pd.DataFrame, column: str) -> pd.DataFrame:
     return pd.DataFrame(0, index=df.index, columns=ohe_columns, dtype='int')
 
 
-def create_feature_set(df, float_cols) -> pd.DataFrame:
+def create_feature_set(df: pd.DataFrame, float_cols: list) -> pd.DataFrame:
     scaler = MinMaxScaler()
 
     # One-hot Encoding
@@ -46,7 +47,7 @@ def create_feature_set(df, float_cols) -> pd.DataFrame:
     return final
 
 
-def process(df):
+def process(df: pd.DataFrame) -> pd.DataFrame:
     df['mode'] = df['mode'].astype(int)
     df['key'] = df['key'].astype(int)
     floats = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness',
@@ -63,26 +64,40 @@ class KNN():
         self.neigh = NearestNeighbors()
         self.basedf = basedf
 
-    def recommend(self, playlist: pd.DataFrame):
+    def train(self):
         audio_feats = self.basedf.columns.difference(['id', 'popularity'])
-
         self.neigh.fit(self.basedf[audio_feats])
 
+    def recommend(self, playlist: pd.DataFrame):
+        audio_feats = self.basedf.columns.difference(['id', 'popularity'])
         n_neighbors = self.neigh.kneighbors(
             playlist[audio_feats], n_neighbors=8, return_distance=False)[0]
         return self.basedf.iloc[n_neighbors]['id'].tolist()
 
+    def save_model(self, filename: str):
+        with open(filename, 'wb') as file:
+            pickle.dump(self.neigh, file)
+
+    def load_model(self, filename: str):
+        with open(filename, 'rb') as file:
+            self.neigh = pickle.load(file)
+
 
 if __name__ == "__main__":
+    # Initialize and save KNN model
     df = pd.read_csv(
         "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
     newdf = process(df)
+    knn = KNN(newdf)
+    knn.train()
+
+    # Save the trained model to a file
+    knn.save_model("src/server/engine.pkl")
 
     # token = get_token()
     # tracks = extract_tracks(get_playlist(
     #     token, "https://open.spotify.com/playlist/37i9dQZEVXcERiO1taF2kU?si=907c24cdfedb4c5f"))
     # playlist = process(tracks)
 
-    # knn = KNN(newdf)
     # recs = knn.recommend(playlist)
     # print(df[df['id'].isin(recs)]['name'])
