@@ -32,6 +32,13 @@ def get_header(token: str):
 
 
 # TODO: EXTRACT
+def search_artist(name: str) -> dict:
+    token = get_token()
+    url = f"https://api.spotify.com/v1/search?q={name.replace(' ', '%20')}&type=artist&limit=1"
+    headers = get_header(token)
+    return get(url, headers=headers).json()['artists']
+
+
 def get_playlist(playlist_url: str) -> dict:
     token = get_token()
     playlist_id = playlist_url.split("/")[-1].split("?")[0]
