@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import json
-from .src.utils.utils import search_artist
+from ..utils.utils import search_artist
 
 df = pd.read_csv(
     "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
@@ -23,7 +23,7 @@ artists = {name: {'img': search_artist(name)['images'][1]['url']}
 
 data = {
     "tracks": df[df['id'].isin(recs)].sort_values('popularity')['id'].tolist(),
-    "artists": artists
+    # "artists": artists
 }
 
 with open('./sample.json', 'w') as f:
