@@ -1,6 +1,6 @@
 from fastapi import status, APIRouter
 from ...engine import KNN
-from ...utils.utils import get_playlist, extract_tracks
+from ...utils.utils import get_playlist, extract_tracks, search_artist
 import pandas as pd
 
 
@@ -19,4 +19,10 @@ def create_vector(url: str):
 
     playlist = extract_tracks(get_playlist(url))
 
-    return knn.recommend(playlist)
+    names = ["Imagine Dragons", "Justin Bieber"]
+
+    return {
+        "tracks": knn.recommend(playlist),
+        "artists": {name:  search_artist(
+            name)['items'][0]['images'][1]['url'] for name in names}
+    }
