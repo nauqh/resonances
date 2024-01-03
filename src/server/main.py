@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import track
+from .routers import track, artist
 
 app = FastAPI(title='Resonance', version='2.0.0')
 
-app.include_router(track.router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -12,6 +12,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(track.router)
+app.include_router(artist.router)
 
 
 @app.get("/")
