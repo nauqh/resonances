@@ -8,16 +8,13 @@ df = pd.read_csv(
 # TODO: QUERY TRACKS
 URL = "http://127.0.0.1:8000/tracks"
 playlist = "https://open.spotify.com/playlist/2xukpbxolEK8C9HdpANzZu?si=7177bd60db6f4271"
-resp = requests.post(URL, params={"url": playlist})
-recs = resp.json()
+recs = requests.post(URL, params={"url": playlist}).json()
 print(df[df['id'].isin(recs)].sort_values('popularity'))
 
 # TODO: QUERY ARTISTS
 URL = "http://127.0.0.1:8000/artists"
 imgs = requests.post(
     URL, json={"names": ['Justin Bieber', 'Imagine Dragons']}).json()
-print(imgs)
-
 
 # JSON file
 data = {
