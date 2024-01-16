@@ -10,4 +10,5 @@ router = APIRouter(
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def create_vector(artists: dict):
-    return {name:  search_artist(name)['items'][0]['images'][1]['url'] for name in artists['names']}
+    return [{"name": name,
+             "img": search_artist(name)['items'][0]['images'][1]['url']} for name in artists['names']]
