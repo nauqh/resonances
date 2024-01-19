@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     ID: str
     SECRET: str
     DB_URL: str
+    OPENAI_KEY: str
 
 
 settings = Settings()
