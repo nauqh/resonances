@@ -1,6 +1,6 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from ..utils import search_artist, get_playlist, get_recommendation
+from src.utils import search_artist, get_playlist, get_recommendation
 from .llm import LLM
 import os
 
