@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./img/logo.png">
+  <img src=".assets/img/logo.png">
 </div>
 
 <p align="center">
@@ -22,7 +22,7 @@ In the contemporary era of digital music consumption, music enthusiasts have unp
 
 Our project since then was initiated from a keen aspiration to directly address this challenge by contructing an innovative and efficient Music Recommendation System which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
 
-<img  width="500" src="./img/shelf.jpeg">
+<img  width="500" src="./assets/img/shelf.jpeg">
 
 ## 📝 Spotify Million Playlist Dataset
 The foundation of the recommendation engine will hinge upon the [Spotify Million Playlist](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge) dataset, a substantial corpus curated for the purpose of advancing research in music recommendations. Sampled from the over 4 billion public playlists on Spotify, this dataset of 1 million playlists consist of over 2 million unique tracks by nearly 300,000 artists, and represents the largest public dataset of music playlists in the world. The dataset includes public playlists created by US Spotify users between January 2010 and November 2017. 
@@ -31,7 +31,7 @@ The challenge ran from January to July 2018, and received 1,467 submissions from
 
 ## 🗂️ Data Management
 
-<img  width="1000" src="./img/Components.png">
+<img  width="1000" src="./assets/img/Components.png">
 
 ### 1. Extraction
 
@@ -45,7 +45,7 @@ Additional details about the data can be accessed via the [Spotify Developer](ht
 
 ### 2. Storage 
 
-<img  width="800" src="./img/storage.png">
+<img  width="800" src="./assets/img/storage.png">
 
 Following the extraction process, the acquired data will be subsequently loaded into a centralized database for further processing, which includes transformation into a machine-readable format. As outlined in the preceding section, the data obtained from the Spotify API comprises three primary categories:
 - **Artist data** encompasses comprehensive information pertaining to the performing artist, including but not limited to genres, popularity, images, and external urls.
@@ -64,7 +64,7 @@ In the context of recommendation systems, data normalization plays a crucial rol
 
 TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wikipedia.org/wiki/Tf%E2%80%93idf), is a tool to quantify words in a set of documents. The goal of TF-IDF is to show the importance of a word in the documents and the corpus. The general formula for calculating TF-IDF score is:
 
-<img  width="800" src="./img/tfidf.webp">
+<img  width="800" src="./assets/img/tfidf.webp">
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
 
@@ -76,14 +76,14 @@ Content-based Filtering is a recommender technique that uses unique features of 
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
-<img  width="800" src="./img/knn.webp">
+<img  width="800" src="./assets/img/knn.webp">
 
 ### 2. Data Pipeline
 
 A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user playlist, accompanied by their corresponding audio features and metadata. 
 
 <div align="center">
-  <img  width="500" src="./img/input.png">
+  <img  width="500" src="./assets/img/input.png">
 </div>
 
 Following this, the system engages in a filtering process to remove URIs that are already present within the database. Subsequently, user playlist undergoes transformation into a unified vector of quantitative values, achieved through the application of mean summarization.
@@ -119,7 +119,7 @@ In addition to providing song recommendations tailored to the user preferences, 
 The primary objective of the **Music Taste Analysis** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
 <div align="center">
-  <img  width="500" src="./img/musictaste.png">
+  <img  width="500" src="./assets/img/musictaste.png">
 </div>
 
 ## 🧑‍💻 Contributors
