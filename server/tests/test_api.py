@@ -4,30 +4,43 @@ import requests
 BASE = "http://127.0.0.1:8000/"
 
 
-# Get analysis
-description = input("What kind of music do you like to listen to: ")
-analysis = requests.post(
-    BASE + 'analysis',
-    json={"description": description}).json()
+# def test_get_analysis():
+#     response = requests.post(BASE + 'analysis',
+#                              json={"description": "Korean Soft Indie"})
+#     assert response.status_code == 200
+
+#     analysis = response.json()
+#     assert len(analysis.keys()) == 6
+
+
+def test_get_artist_info():
+    response = requests.post(BASE + 'artist',
+                             json={"names": ['Justin Bieber', 'Charlie Puth']})
+    assert response.status_code == 200
+
+    artists = response.json()
+    assert len(artists) == 2
+
+
+def test_get_recommendation():
+    response = requests.post(BASE + "recommendation",
+                             json={"ids": ['57okaLdCtv3nVBSn5otJkp', '5HenzRvMtSrgtvU16XAoby']})
+    assert response.status_code == 200
+
+    songs = response.json()
+    assert len(songs) == 8
+
+
+def test_get_playlist():
+    ...
+
 
 # Get artist info and add 'content' key for each artist
-analysis['artists'] = [
-    {**artist, 'content': content}
-    for artist, content in zip(
-        requests.post(BASE + 'artist',
-                      json={"names": analysis['artists']}).json(),
-        analysis['content'])
-]
-del analysis['content']
-
-# Get song recommendation
-ids = [artist['id'] for artist in analysis['artists']]
-
-songs = requests.post(BASE + "recommendation",
-                      json={"ids": ['57okaLdCtv3nVBSn5otJkp', '5HenzRvMtSrgtvU16XAoby']}).json()
-
-analysis['tracks'] = [song['id'] for song in songs]
-
-
-with open("data.json", "w") as f:
-    json.dump(analysis, f)
+# analysis['artists'] = [
+#     {**artist, 'content': content}
+#     for artist, content in zip(
+#         requests.post(BASE + 'artist',
+#                       json={"names": analysis['artists']}).json(),
+#         analysis['content'])
+# ]
+# del analysis['content']

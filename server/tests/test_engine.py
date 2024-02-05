@@ -1,12 +1,11 @@
 from src.utils.utils import get_playlist, extract_tracks
 from src.engine import KNN
 import pandas as pd
-import pytest
 
 
 def test_recommendation():
     df = pd.read_csv(
-        "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
+        "D:/Laboratory/Projects/resonance/assets/data/Spotify Top Hits/cleaned_track.csv")
 
     knn = KNN(df)
     knn.load_model("src/server/engine.pkl")
