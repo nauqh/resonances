@@ -1,16 +1,15 @@
-import json
 import requests
 
 BASE = "http://127.0.0.1:8000/"
 
 
-# def test_get_analysis():
-#     response = requests.post(BASE + 'analysis',
-#                              json={"description": "Korean Soft Indie"})
-#     assert response.status_code == 200
+def test_get_analysis():
+    response = requests.post(BASE + 'analysis',
+                             json={"description": "Korean Soft Indie"})
+    assert response.status_code == 200
 
-#     analysis = response.json()
-#     assert len(analysis.keys()) == 6
+    analysis = response.json()
+    assert len(analysis.keys()) == 6
 
 
 def test_get_artist_info():
