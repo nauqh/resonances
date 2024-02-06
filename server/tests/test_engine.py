@@ -8,7 +8,7 @@ def test_recommendation():
         "D:/Laboratory/Projects/resonance/assets/data/Spotify Top Hits/cleaned_track.csv")
 
     knn = KNN(df)
-    knn.load_model("src/server/engine.pkl")
+    knn.load_model("server/src/engine.pkl")
 
     playlist = extract_tracks(get_playlist(
         "https://open.spotify.com/playlist/2xukpbxolEK8C9HdpANzZu?si=7177bd60db6f4271"))
