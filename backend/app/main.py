@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from src.utils import search_artist, get_playlist, get_recommendation
-from .llm import LLM
+from ..src.llm import LLM
 import os
 
 app = FastAPI(title='Resonance', version='2.0.0')
