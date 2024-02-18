@@ -16,7 +16,7 @@
 
 In the contemporary era of digital music consumption, music enthusiasts have unparalleled access to a vast ocean of musical content. However, within these expansive collections, the need to discover the ideal tunes can be simultaneously delightful and difficult. 
 
-Our project since then was initiated from a keen aspiration to directly address this challenge by contructing an innovative and efficient `music recommendation system` which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
+Our project since then was initiated from a keen aspiration to directly address this challenge by contructing an innovative and efficient music recommendation system which leverages both existing data provided by music streaming platform and contemporary technology of recommender engine and large language models.
 
 ## Table of Contents
 - [System design](#system-design)
@@ -31,7 +31,7 @@ Our project since then was initiated from a keen aspiration to directly address 
 ## System design
 The repository structure follows the conceptual architecture of resonance, which consists of four loosely-coupled sub-systems:
 - [**Recommendation engine**](#recommendation-engine) analyzes users music preferences to provide personalized insights while also suggesting artists and songs that aligns with their music characteristics.
-- [**Database**](#data-management) as a system for persistent storage of music data.
+- [**Database**](#data-management) serves as a system for persistent storage of music data.
 - [**Web server**](#web-server) exposes insights and recommendation on user music taste from recommendation engine via a RESTful API to the user interface.
 - [**User interface**](#user-interface) displays results from recommendation engine while creating engaging and interactive user experiences.
 
@@ -39,12 +39,17 @@ Technologies used include **Python** (recommendation engine), **FastAPI** (web s
 
 ![](./assets/img/system.png)
 
-The recommendation engine employs **Content-based Filtering** method with **K-Nearest Neighbor** (KNN) algorithm, utilizing the Spotify Million Playlist Dataset for analyzing user music preferences. We've also integrated **OpenAI**'s advanced LLM model, fine-tuned specifically for music-related content.
+The recommendation engine employs **Content-based Filtering** method with **K-Nearest Neighbor** (KNN) algorithm, utilizing the [Spotify Million Playlist Dataset](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge) for analyzing user music preferences. We've also integrated **OpenAI**'s advanced LLM model, fine-tuned specifically for music-related content.
 
 ## Recommendation engine
 The recommendation engine comprises two essential components: Music Taste Analyzer and Song Recommender.
 
-### 1. Song Recommender
+### 1. Music Taste Analyzer
+In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
+
+The primary objective of the Music Taste Analyzer engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
+
+### 2. Song Recommender
 The Music Recommender employs content-based filtering technique, leveraging K-Nearest Neighbor (KNN) algorithm to suggest songs that are closely aligned with user music preferences.
 
 [Content-based Filtering](https://developers.google.com/machine-learning/recommendation/content-based/basics) is a recommendation technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
@@ -52,11 +57,6 @@ The Music Recommender employs content-based filtering technique, leveraging K-Ne
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
 ![](./assets/img/knn.webp)
-
-### 2. Music Taste Analyzer
-In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
-
-The primary objective of the Music Taste Analyzer engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
 ### 3. Data Pipeline
 A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user playlist, accompanied by their corresponding audio features and metadata. 
