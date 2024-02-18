@@ -22,15 +22,18 @@ Our project since then was initiated from a keen aspiration to directly address 
 - [System design](#system-design)
 - [Recommendation engine](#recommendation-engine)
 - [Data management](#data-management)
+  - [Extraction](#1-extraction)
+  - [Storage](#2-storage)
+  - [Transformation](#3-transformation)
 - [Web server](#web-server)
 - [User interface](#user-interface)
 
 ## System design
 The repository structure follows the conceptual architecture of resonance, which consists of four loosely-coupled sub-systems:
-- The [**recommendation engine**](#recommendation-engine) analyzes users music preferences to provide personalized insights while also suggesting artists and songs that aligns with their music characteristics.
-- The [**database**](#data-management) as a system for persistent storage of music data.
-- The [**web server**](#web-server) exposes insights and recommendation on music taste from engine via a RESTful API to the user interface.
-- The [**UI**](#user-interface) utilizes Hikari as the library for building a Discord bot, providing a powerful and efficient framework for interacting with the Discord API and creating engaging and interactive experiences for users.
+- [**Recommendation engine**](#recommendation-engine) analyzes users music preferences to provide personalized insights while also suggesting artists and songs that aligns with their music characteristics.
+- [**Database**](#data-management) as a system for persistent storage of music data.
+- [**Web server**](#web-server) exposes insights and recommendation on user music taste from recommendation engine via a RESTful API to the user interface.
+- [**User interface**](#user-interface) displays results from recommendation engine while creating engaging and interactive user experiences.
 
 Technologies used include **Python** (recommendation engine), **FastAPI** (web server) and **SQLite**. The frontend is designed and written in **React**. All OpenAI model queries are performed using **Langchain**. All backend components are containerized with **Docker**.
 
@@ -53,7 +56,7 @@ The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors
 ### 2. Music Taste Analyzer
 In addition to providing song recommendations tailored to the user preferences, we have implemented a text-based system that offers a comprehensive analysis of individualized music characteristics, drawing insights from the user's specific music taste. 
 
-The primary objective of the **Music Taste Analyzer** engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
+The primary objective of the Music Taste Analyzer engine is to evaluate user musical preferences based on their specified criteria. This assessment yields a comprehensive explanation of the user’s music tastes, accompanied by a thoughtfully curated selection of musical artists that align with these preferences. 
 
 ### 3. Data Pipeline
 A specialized data pipeline has been crafted to serve this objective, structured around two distinct use cases. In the scenario where users opt to furnish their own Spotify playlists as input, the pipeline initiates with the retrieval of diverse Spotify URIs within the user playlist, accompanied by their corresponding audio features and metadata. 
