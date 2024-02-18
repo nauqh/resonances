@@ -20,19 +20,17 @@ Our project since then was initiated from a keen aspiration to directly address 
 
 ## Table of Contents
 - [System design](#system-design)
-- [Recommendation dngine](#recommendation-engine)
+- [Recommendation engine](#recommendation-engine)
 - [Data management](#data-management)
 - [Web server](#web-server)
 - [User interface](#user-interface)
 
 ## System design
-The repository structure follows the conceptual architecture of resonance, which consists of four loosely-coupled sub-systems.
-
-To briefly explain these four sub-systems:
-- The **recommendation engine** analyzes users music preferences to provide personalized insights while also suggesting artists and songs that aligns with their music characteristics.
-- The **database** as a system for persistent storage of music data.
-- The **web server** exposes insights and recommendation on music taste from engine via a RESTful API to the client.
-- The **UI** utilizes Hikari as the library for building a Discord bot, providing a powerful and efficient framework for interacting with the Discord API and creating engaging and interactive experiences for users.
+The repository structure follows the conceptual architecture of resonance, which consists of four loosely-coupled sub-systems:
+- The [**recommendation engine**](#recommendation-engine) analyzes users music preferences to provide personalized insights while also suggesting artists and songs that aligns with their music characteristics.
+- The [**database**](#data-management) as a system for persistent storage of music data.
+- The [**web server**](#web-server) exposes insights and recommendation on music taste from engine via a RESTful API to the user interface.
+- The [**UI**](#user-interface) utilizes Hikari as the library for building a Discord bot, providing a powerful and efficient framework for interacting with the Discord API and creating engaging and interactive experiences for users.
 
 Technologies used include **Python** (recommendation engine), **FastAPI** (web server) and **SQLite**. The frontend is designed and written in **React**. All OpenAI model queries are performed using **Langchain**. All backend components are containerized with **Docker**.
 
@@ -41,12 +39,12 @@ Technologies used include **Python** (recommendation engine), **FastAPI** (web s
 The recommendation engine employs **Content-based Filtering** method with **K-Nearest Neighbor** (KNN) algorithm, utilizing the Spotify Million Playlist Dataset for analyzing user music preferences. We've also integrated **OpenAI**'s advanced LLM model, fine-tuned specifically for music-related content.
 
 ## Recommendation engine
-The recommendation engine comprises two essential components: the Music Taste Analyzer and the Song Recommender.
+The recommendation engine comprises two essential components: Music Taste Analyzer and Song Recommender.
 
 ### 1. Song Recommender
 The Music Recommender employs content-based filtering technique, leveraging K-Nearest Neighbor (KNN) algorithm to suggest songs that are closely aligned with user music preferences.
 
-[Content-based Filtering](https://developers.google.com/machine-learning/recommendation/content-based/basics) is a recommender technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
+[Content-based Filtering](https://developers.google.com/machine-learning/recommendation/content-based/basics) is a recommendation technique that uses unique features of items to find similar ones. It assigns a similarity score based on these features to generate recommendations. In the case of Spotify playlists, this involves analyzing song characteristics to compute an aggregate score for a playlist. Then, it recommends top similar songs that closely align with this score but are not already in the playlist.
 
 The [K-Nearest Neighbor (KNN)](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm is commonly used in Content-based Filtering for music recommendation systems. It works by finding a specified number (K) of music tracks that closely match a user's current preferences. This is done by comparing features like genre, tempo, instrumentation, and user behavior patterns. By utilizing this similarity metric, KNN can make accurate predictions about which songs a user is likely to enjoy based on their past interactions with the platform.
 
@@ -75,7 +73,7 @@ Rather than utilizing the complete original dataset for training our recommendat
 
 Through this meticulous approach, we gather essential audio features and pertinent song metadata, which includes artist and album details. This carefully curated dataset will serve as the cornerstone of our recommendation engine, ensuring that users receive highly relevant results through our interface. 
 
-Additional details about the data can be accessed via the [Spotify Developer](https://developer.spotify.com/documentation/web-api) platform. The code for the extraction process can be found in the associated [repository](https://github.com/nauqh/Resonance).
+Additional details about the data can be accessed via the [Spotify Developer](https://developer.spotify.com/documentation/web-api) platform. The code for the extraction process can be found in the associated [repository](https://github.com/nauqh/resonance/blob/main/backend/src/utils/utils.py).
 
 ### 2. Storage 
 Following the extraction process, the acquired data will be subsequently loaded into a centralized database for further processing, which includes transformation into a machine-readable format. As outlined in the preceding section, the data obtained from the Spotify API comprises three primary categories:
@@ -96,13 +94,18 @@ TF-IDF, also known as [Term Frequency-Inverse Document Frequency](https://en.wik
 
 The motivation is to find words that are not only important in each document but also accounting for the entire corpus. The log value was taken to decrease the impact of a large N, which would lead to a very large IDF compared to TF. Term Frequency (TF) focuses on how crucial a word is within one document, while Inverse Document Frequency (IDF) looks at how important a word is across all the documents.
 
+## Web server
+The web server is written in **Python** using **FastAPI**. It employs **Pydantic** to validate the integrity and quality of extracted Spotify data through customizable data quality checks and adherence to expected schema and format.  
+
+The server provides access to recommendation engine results through a RESTful API, accessible at the endpoints **/analysis**, **/songs**, and **/artists**. Additionally, it serves the frontend application to facilitate user interaction with the system.
+
 ## User interface
 The frontend architecture is developed using **React** framework. Initially, users are presented with a variety of audio feature scales and options to customize their music preferences. Subsequently, upon user action, relevant user data is transmitted to the recommendation engine and the returned results are displayed on user interface.
 
 Users have the option to personalize their music preferences, explore predefined music characteristics offered by the engine, or even integrate their Spotify playlists for enhanced music recommendations.
 
 ## Contributors
-- Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
-- Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
-- Adam Ye - [Novitix](https://github.com/novitix) 
-- Ashton Sequeira - [Ashton](https://github.com/ashton15022002)
+- [x] Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
+- [x] Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
+- [x] Adam Ye - [Novitix](https://github.com/novitix) 
+- [x] Ashton Sequeira - [Ashton](https://github.com/ashton15022002)
