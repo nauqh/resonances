@@ -87,9 +87,9 @@ class KNN():
 if __name__ == "__main__":
     # Initialize KNN model
     df = pd.read_csv(
-        "D:/Laboratory/Study/Monash/FIT3162/Resonance/data/Spotify Top Hits/cleaned_track.csv")
+        "D:/Laboratory/Projects/resonance/assets/data/Spotify Top Hits/cleaned_track.csv")
     knn = KNN(df)
     knn.train()
 
     # Save the trained model to a file
-    knn.save_model("src/server/engine.pkl")
+    knn.save_model("engine.pkl")
