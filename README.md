@@ -35,7 +35,7 @@ The repository structure follows the conceptual architecture of resonance, which
 - [**Web server**](#web-server) exposes insights and recommendation on user music taste from recommendation engine via a RESTful API to the user interface.
 - [**User interface**](#user-interface) displays results from recommendation engine while creating engaging and interactive user experiences.
 
-Technologies used include **Python** (recommendation engine), **FastAPI** (web server) and **SQLite**. The frontend is designed and written in **React**. All OpenAI model queries are performed using **Langchain**. All backend components are containerized with **Docker**.
+Technologies used include **Python** & **Langchain** (recommendation engine), **FastAPI** (web server) and **SQLite**. The frontend is designed and written in **React**. All backend components are containerized with **Docker**.
 
 ![](./assets/img/system.png)
 
@@ -105,7 +105,7 @@ The server provides access to recommendation engine results through a RESTful AP
 ## User interface
 The frontend architecture is developed using **React** framework. Initially, users are presented with a variety of audio feature scales and options to customize their music preferences. Subsequently, upon user action, relevant user data is transmitted to the recommendation engine and the returned results are displayed on user interface.
 
-Users have the option to personalize their music preferences, explore predefined music characteristics offered by the engine, or even integrate their Spotify playlists for enhanced music recommendations.
+Users have the option to personalize their music preferences, explore predefined music characteristics offered by the engine, or even integrate their Spotify playlists for enhanced music recommendations. Visit the user interface through this github [repository](https://github.com/nauqh/musicotherapy).
 
 ## Contributors
 - [x] Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
