@@ -5,7 +5,7 @@
 <p align="center">
 <a href=""><img src="https://img.shields.io/badge/Latest%20Version-V2.0.0-blue.svg?&style=for-the-badge&logo=git&logoColor=white&colorB=7289DA"></a> <br>
 <a href=""><img src="https://img.shields.io/badge/Python%203.10-blue.svg?&style=for-the-badge&logo=python&logoColor=white&colorB=00b4d8"></a>
-<a href=""><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&&colorB=00b4d8"></a>
+<a href=""><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=white&colorB=00b4d8"></a>
 <a href=""><img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&colorB=0096c7"></a> <br>
 <a href=""><img src="https://img.shields.io/badge/OpenAI-74aa9c?style=for-the-badge&logo=openai&logoColor=white"></a>
 <a href=""><img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white&colorB=52b788"></a>
@@ -35,7 +35,7 @@ The repository structure follows the conceptual architecture of resonance, which
 - [**Web server**](#web-server) exposes insights and recommendation on user music taste from recommendation engine via a RESTful API to the user interface.
 - [**User interface**](#user-interface) displays results from recommendation engine while creating engaging and interactive user experiences.
 
-Technologies used include **Python** & **Langchain** (recommendation engine), **FastAPI** (web server) and **SQLite**. The frontend is designed and written in **React**. All backend components are containerized with **Docker**.
+Technologies used include **Python** & **Langchain** (recommendation engine), **FastAPI** (web server) and **PostgreSQL**. The frontend is designed and written in **React**. All backend components are containerized with **Docker**.
 
 ![](./assets/img/system.png)
 
@@ -103,12 +103,6 @@ The web server is written in **Python** using **FastAPI**. It employs **Pydantic
 The server provides access to recommendation engine results through a RESTful API, accessible at the endpoints **/analysis**, **/songs**, and **/artists**. Additionally, it serves the frontend application to facilitate user interaction with the system.
 
 ## User interface
-The frontend architecture is developed using **React** framework. Initially, users are presented with a variety of audio feature scales and options to customize their music preferences. Subsequently, upon user action, relevant user data is transmitted to the recommendation engine and the returned results are displayed on user interface.
+The frontend architecture is developed using **Typescript** with **React** framework. Initially, users are presented with a variety of audio feature scales and options to customize their music preferences. Subsequently, upon user action, relevant user data is transmitted to the recommendation engine and the returned results are displayed on user interface.
 
 Users have the option to personalize their music preferences, explore predefined music characteristics offered by the engine, or even integrate their Spotify playlists for enhanced music recommendations. Visit the user interface through this github [repository](https://github.com/nauqh/musicotherapy).
-
-## Contributors
-- [x] Ho Do Minh Quan - [Nauqh](https://github.com/nauqh)
-- [x] Hilmy Mulyana - [Dichromatic](https://github.com/dichromatic)
-- [x] Adam Ye - [Novitix](https://github.com/novitix) 
-- [x] Ashton Sequeira - [Ashton](https://github.com/ashton15022002)
