@@ -17,9 +17,9 @@ app.add_middleware(
 def root():
     return {"message": "Root endpoint"}
 
-@app.get("/example/{example_name}")     # example json api call, will find the json file (currently in the same dir, may change later)
+@app.get("/example/{example_name}")     # example json api call, will find the json file 
 def example(example_name):
-    with open(f'{example_name}.json') as ex:
+    with open(f'examples/{example_name}.json') as ex:
         ex_j = json.load(ex)
     ex.close()
     return ex_j
