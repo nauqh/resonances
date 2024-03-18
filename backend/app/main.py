@@ -24,7 +24,6 @@ def root():
 @app.get("/example/")     # example json api call, will find the json file 
 def example(example_name: Example):
     genre = example_name.genre
-    print(example_name)
     with open(f'examples/{genre}.json') as ex:
         ex_j = json.load(ex)
     ex.close()
