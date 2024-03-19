@@ -3,10 +3,12 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
-from .config import settings
+from dotenv import load_dotenv
+import os
 
-client_id = settings.ID
-client_secret = settings.SECRET
+load_dotenv()
+client_id = os.environ['ID']
+client_secret = os.environ['SECRET']
 
 
 def get_token() -> str:
@@ -23,7 +25,7 @@ def get_token() -> str:
 
     resp = post(url, headers=headers, data=data).json()
     token = resp["access_token"]
-
+    
     return token
 
 
