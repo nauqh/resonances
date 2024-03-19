@@ -101,6 +101,6 @@ def extract_artists(df) -> DataFrame:
     return pd.DataFrame(artists)
 
 
-if __name__ == "__main__":
-    artist = search_artist("Justin Bieber")
-    print(artist)
+# if __name__ == "__main__":
+#     artist = search_artist("Justin Bieber")
+#     print(artist['items'][0]['images'][0]['url'])
