@@ -98,6 +98,14 @@ def search_playlist(keyword: str) -> dict:
     return get(url, headers=headers).json()
 
 
+def get_recommendation(artist_ids: list):
+    token = get_token()
+    url = f"https://api.spotify.com/v1/recommendations?seed_artists={','.join(artist_ids)}&limit=9"
+    headers = get_header(token)
+    tracks = get(url, headers=headers).json()['tracks']
+    return [track['id'] for track in tracks]
+
+
 def extract_artists(df) -> DataFrame:
     token = get_token()
     ids = {row['artist'] for _, row in df.iterrows()}
@@ -108,3 +116,6 @@ def extract_artists(df) -> DataFrame:
 if __name__ == "__main__":
     artist = search_artist("Justin Bieber")
     print(artist)
+
+    artist_ids = ['1uNFoZAHBGtllmzznpCI3s', '5IH6FPUwQTxPSXurCrcIov']
+    get_recommendation(artist_ids)
