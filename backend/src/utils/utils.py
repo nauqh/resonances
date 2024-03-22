@@ -103,7 +103,9 @@ def get_recommendation(artist_ids: list):
     url = f"https://api.spotify.com/v1/recommendations?seed_artists={','.join(artist_ids)}&limit=9"
     headers = get_header(token)
     tracks = get(url, headers=headers).json()['tracks']
-    return [track['id'] for track in tracks]
+
+    return [{'id': track['id'],
+             'name': track['name']} for track in tracks]
 
 
 def extract_artists(df) -> DataFrame:
