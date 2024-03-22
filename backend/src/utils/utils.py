@@ -3,10 +3,9 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
-from .config import settings
 
-client_id = settings.ID
-client_secret = settings.SECRET
+client_id = "05060bd83aca4d0e992db623fc7c717a"
+client_secret = "4c2cad4614dc4f77acc00517a42e3b26"
 
 
 def get_token() -> str:
@@ -90,6 +89,13 @@ def extract_tracks(playlist) -> DataFrame:
             **features
         })
     return pd.DataFrame(tracks)
+
+
+def search_playlist(keyword: str) -> dict:
+    token = get_token()
+    url = f"https://api.spotify.com/v1/search?q={keyword.replace(' ', '%20')}&type=playlist&limit=1"
+    headers = get_header(token)
+    return get(url, headers=headers).json()
 
 
 def extract_artists(df) -> DataFrame:
