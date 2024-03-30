@@ -111,7 +111,9 @@ def get_recommendation(artist_ids: list):
 
     return [{'id': track['id'],
              'name': track['name'],
-             'artists': track['artists'][0]['name']} for track in tracks]
+             'artist': track['artists'][0]['name'],
+             'duration': f"{track['duration_ms'] // 60000}:{(track['duration_ms'] % 60000) / 1000:02.0f}"
+             } for track in tracks]
 
 
 def extract_artists(df) -> DataFrame:
