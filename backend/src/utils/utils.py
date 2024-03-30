@@ -3,9 +3,14 @@ from tqdm import tqdm
 import pandas as pd
 from pandas import DataFrame
 from requests import post, get
+from dotenv import load_dotenv
+import os
 
-client_id = "05060bd83aca4d0e992db623fc7c717a"
-client_secret = "4c2cad4614dc4f77acc00517a42e3b26"
+load_dotenv()
+
+
+client_id = os.environ['ID']
+client_secret = os.environ['SECRET']
 
 
 def get_token() -> str:
