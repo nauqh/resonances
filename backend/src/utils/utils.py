@@ -95,7 +95,7 @@ def search_playlist(keyword: str) -> dict:
     token = get_token()
     url = f"https://api.spotify.com/v1/search?q={keyword.replace(' ', '%20')}&type=playlist&limit=1"
     headers = get_header(token)
-    return get(url, headers=headers).json()
+    return get(url, headers=headers).json()['playlists']['items'][0]
 
 
 def get_recommendation(artist_ids: list):
