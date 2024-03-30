@@ -105,7 +105,8 @@ def get_recommendation(artist_ids: list):
     tracks = get(url, headers=headers).json()['tracks']
 
     return [{'id': track['id'],
-             'name': track['name']} for track in tracks]
+             'name': track['name'],
+             'artists': track['artists'][0]['name']} for track in tracks]
 
 
 def extract_artists(df) -> DataFrame:
