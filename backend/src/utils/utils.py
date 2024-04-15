@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
+
 client_id = os.environ['ID']
 client_secret = os.environ['SECRET']
 
@@ -94,6 +96,26 @@ def extract_tracks(playlist) -> DataFrame:
     return pd.DataFrame(tracks)
 
 
+def search_playlist(keyword: str) -> dict:
+    token = get_token()
+    url = f"https://api.spotify.com/v1/search?q={keyword.replace(' ', '%20')}&type=playlist&limit=1"
+    headers = get_header(token)
+    return get(url, headers=headers).json()['playlists']['items'][0]
+
+
+def get_recommendation(artist_ids: list):
+    token = get_token()
+    url = f"https://api.spotify.com/v1/recommendations?seed_artists={','.join(artist_ids)}&limit=9"
+    headers = get_header(token)
+    tracks = get(url, headers=headers).json()['tracks']
+
+    return [{'id': track['id'],
+             'name': track['name'],
+             'artist': track['artists'][0]['name'],
+             'duration': f"{track['duration_ms'] // 60000}:{(track['duration_ms'] % 60000) / 1000:02.0f}"
+             } for track in tracks]
+
+
 def extract_artists(df) -> DataFrame:
     token = get_token()
     ids = {row['artist'] for _, row in df.iterrows()}
@@ -101,6 +123,9 @@ def extract_artists(df) -> DataFrame:
     return pd.DataFrame(artists)
 
 
-# if __name__ == "__main__":
-#     artist = search_artist("Justin Bieber")
-#     print(artist['items'][0]['images'][0]['url'])
+if __name__ == "__main__":
+    artist = search_artist("Justin Bieber")
+    print(artist)
+
+    artist_ids = ['1uNFoZAHBGtllmzznpCI3s', '5IH6FPUwQTxPSXurCrcIov']
+    get_recommendation(artist_ids)

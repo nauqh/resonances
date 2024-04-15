@@ -65,6 +65,6 @@ class LLM():
         return self.__get_parser().parse(result.content)
 
 
-# if __name__ == "__main__":
-#     x = LLM(os.environ['OPENAI_KEY']).analyze("Korean Pop Indie")
-#     print(x)
+if __name__ == "__main__":
+    x = LLM(os.environ['API_KEY']).analyze("Korean Pop Indie")
+    print(x)
