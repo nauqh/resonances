@@ -16,17 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"])
 
-class Example(BaseModel):
-    genre: str
-
 @app.get("/")
 def root():
     return {'message': 'Root endpoint'}
-
-@app.get("/analysis/")
-def analyse(desc: dict):
-    '''analysis endpoint calls LLM prompt gen'''
-    return LLM(os.environ['OPENAI_KEY']).analyze(desc)
 
 @app.get("/example/")
 def example(example_name: dict):
@@ -37,15 +29,28 @@ def example(example_name: dict):
     ex.close()
     return ex_j
 
-@app.get("/artist_img_url/")
-def get_artist_image(artist: dict):
-    return {'url': search_artist(artist['artist'])['items'][0]['images'][0]['url']}    # scuffed as shit
+@app.get("/analysis/")
+def analyse(desc: dict):
+    '''analysis endpoint calls LLM prompt gen'''
+    return LLM(os.environ['OPENAI_KEY']).analyze(desc)
 
-def get_playlists():
-    return {"playlists"}
+@app.get("/artist/")
+def artist(artists: dict):
+    res_list = []
+    for artist in artists['names']:
+        print(artist)
+        res_list.append({'name': artist,
+                    'img': search_artist(artist)['items'][0]['images'][0]['url'],
+                    'id': search_artist(artist)['items'][0]['id']})
+    return res_list
 
-def get_tracks():
-    return {"tracks"}
+@app.get("/playlist/")
+def playlists(playlist: dict):
+    return search_playlist(playlist['keyword'])
+
+@app.get("/recommendation/")
+def recommendation(recommendations: dict):
+    return get_recommendation(recommendations['ids'])
 
 # @app.get("/generate/{spotify_account}")
 # def generate_taste(spotify_account):
