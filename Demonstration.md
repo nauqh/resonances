@@ -39,3 +39,4 @@ flowchart
 **Quan**:
 - Re-execute with customized preference
 - Play music on Spotify 
+- (if time) Navigate to playlist analysis streamlit app
