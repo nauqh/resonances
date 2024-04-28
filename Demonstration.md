@@ -22,7 +22,7 @@ flowchart
 ## Allocation
 **Ashton**: 
 - Overview of the project. Indicate this is a `music taste analysis and recommendation` system
-- Start from home introduce options
+- Start from home, introduce options
 - Overview of input page
 
 **Hilmy**:
