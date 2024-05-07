@@ -27,7 +27,7 @@ def get_token() -> str:
 
     resp = post(url, headers=headers, data=data).json()
     token = resp["access_token"]
-    
+
     return token
 
 
@@ -123,9 +123,9 @@ def extract_artists(df) -> DataFrame:
     return pd.DataFrame(artists)
 
 
-# if __name__ == "__main__":
-#     artist = search_artist("Justin Bieber")
-#     print(artist)
+if __name__ == "__main__":
+    artist = search_artist("Justin Bieber")
+    print(artist)
 
-    # artist_ids = ['1uNFoZAHBGtllmzznpCI3s', '5IH6FPUwQTxPSXurCrcIov']
-    # get_recommendation(artist_ids)
+    artist_ids = ['1uNFoZAHBGtllmzznpCI3s', '5IH6FPUwQTxPSXurCrcIov']
+    get_recommendation(artist_ids)

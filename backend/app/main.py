@@ -1,57 +1,72 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-import json
 import os
-# run python3 -m backend.app.main once pydantic is setup properly
-from src.utils.utils import *
-from src.llm import LLM
 
-app = FastAPI(title='Resonance', version='1.0.0')
+# Database
+from . import models
+from .database import engine
+from .schemas import Playlist, ArtistList
+
+# Utils
+from ..src.utils.utils import search_artist, search_playlist, get_recommendation
+from ..src.llm import LLM
+from ..src.receipt import send_email
+
+# Routers
+from .routers import user
+
+models.Base.metadata.create_all(bind=engine)
+
+
+app = FastAPI(title='Resonance',
+              summary="Music taste analysis and recommendation system",
+              version='2.0.0')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],    
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"])
 
+app.include_router(user.router)
+
+
 @app.get("/")
 def root():
-    return {'message': 'Root endpoint'}
+    return {"message": "Root endpoint"}
 
-@app.post("/example/")
-def example(example_name: dict):
-    '''example endpoint from premade json'''
-    genre = example_name['genre']
-    with open(f'examples/{genre}.json') as ex:
-        ex_j = json.load(ex)
-    ex.close()
-    return ex_j
 
-@app.post("/analysis/")
-def analyse(desc: dict):
-    '''analysis endpoint calls LLM prompt gen'''
-    return LLM(os.environ['OPENAI_KEY']).analyze(desc)
+@app.post("/analysis", status_code=status.HTTP_201_CREATED)
+def create_analysis(description: dict):
+    return LLM(os.environ['API_KEY']).analyze(description)
 
-@app.post("/artist/")
-def artist(artists: dict):
-    res_list = []
-    for artist in artists['names']:
-        res_list.append({'name': artist,
-                    'img': search_artist(artist)['items'][0]['images'][0]['url'],
-                    'id': search_artist(artist)['items'][0]['id']})
-    return res_list
 
-@app.post("/playlist/")
-def playlists(playlist: dict):
-    return search_playlist(playlist['keyword'])
+@app.post("/playlist", status_code=status.HTTP_201_CREATED)
+def create_playlist(playlist: Playlist):
+    return search_playlist(playlist.keyword)
 
-@app.post("/recommendation/")
-def recommendation(recommendations: dict):
-    return get_recommendation(recommendations['ids'])
 
-"""
-cd backend
-uvicorn app.main:app --reload
-"""
+@app.post("/artist", status_code=status.HTTP_201_CREATED)
+def create_artist(data: ArtistList):
+    artists = []
+
+    for name in data.names:
+        resp = search_artist(name)
+        artist = {
+            "name": name,
+            "img": resp['items'][0]['images'][1]['url'] or resp['items'][0]['images']['url'],
+            "id": resp['items'][0]['id']}
+        artists.append(artist)
+    return artists
+
+
+@app.post("/recommendation", status_code=status.HTTP_201_CREATED)
+def create_recommendation(data: dict):
+    return get_recommendation(data['ids'])
+
+
+@app.post("/receipt", status_code=status.HTTP_201_CREATED)
+def send_receipt(data: dict):
+    send_email(data['recipients'], data['attachment'])
+    return f"Sent email to {', '.join(data['recipients'])}"
