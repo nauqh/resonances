@@ -1,0 +1,26 @@
+{
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "artist",
+        "duration"
+      ]
+    }
+  }
