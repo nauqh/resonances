@@ -5,3 +5,4 @@ requests
 langchain
 langchain-openai
 sqlalchemy
+jsonschema
