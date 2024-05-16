@@ -1,6 +1,9 @@
-from fastapi import FastAPI, status
+from fastapi import FastAPI, status, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import os
+
+# Input validation
+from .schema.input.schema_test import validate_json
 
 # Database
 from . import models
@@ -39,16 +42,19 @@ def root():
 
 @app.post("/analysis", status_code=status.HTTP_201_CREATED)
 def create_analysis(description: dict):
+    validate_json(description, "analysis_input")
     return LLM(os.environ['API_KEY']).analyze(description)
 
 
 @app.post("/playlist", status_code=status.HTTP_201_CREATED)
 def create_playlist(playlist: Playlist):
+    validate_json(playlist.model_dump(), "playlist_input")
     return search_playlist(playlist.keyword)
 
 
 @app.post("/artist", status_code=status.HTTP_201_CREATED)
 def create_artist(data: ArtistList):
+    validate_json(data.model_dump(), "artist_input")
     artists = []
 
     for name in data.names:
@@ -63,6 +69,7 @@ def create_artist(data: ArtistList):
 
 @app.post("/recommendation", status_code=status.HTTP_201_CREATED)
 def create_recommendation(data: dict):
+    validate_json(data, "recommendation_input")
     return get_recommendation(data['ids'])
 
 
