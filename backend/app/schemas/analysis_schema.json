@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+      "genre": {
+        "type": "string"
+      },
+      "mood": {
+        "type": "string"
+      },
+      "color": {
+        "type": "string"
+      },
+      "characteristics": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "artists": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "content": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "genre",
+      "mood",
+      "color",
+      "characteristics",
+      "artists",
+      "content"
+    ]
+  }
