@@ -1,0 +1,140 @@
+{
+    "type": "object",
+    "properties": {
+      "collaborative": {
+        "type": "boolean"
+      },
+      "description": {
+        "type": "string"
+      },
+      "external_urls": {
+        "type": "object",
+        "properties": {
+          "spotify": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "spotify"
+        ]
+      },
+      "href": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      },
+      "images": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "height": {
+                "type": "null"
+              },
+              "url": {
+                "type": "string"
+              },
+              "width": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "height",
+              "url",
+              "width"
+            ]
+          }
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "owner": {
+        "type": "object",
+        "properties": {
+          "display_name": {
+            "type": "string"
+          },
+          "external_urls": {
+            "type": "object",
+            "properties": {
+              "spotify": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "spotify"
+            ]
+          },
+          "href": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "display_name",
+          "external_urls",
+          "href",
+          "id",
+          "type",
+          "uri"
+        ]
+      },
+      "primary_color": {
+        "type": "null"
+      },
+      "public": {
+        "type": "null"
+      },
+      "snapshot_id": {
+        "type": "string"
+      },
+      "tracks": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "href",
+          "total"
+        ]
+      },
+      "type": {
+        "type": "string"
+      },
+      "uri": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "collaborative",
+      "description",
+      "external_urls",
+      "href",
+      "id",
+      "images",
+      "name",
+      "owner",
+      "primary_color",
+      "public",
+      "snapshot_id",
+      "tracks",
+      "type",
+      "uri"
+    ]
+  }

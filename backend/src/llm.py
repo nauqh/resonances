@@ -1,3 +1,4 @@
+import langchain_core
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
@@ -10,7 +11,7 @@ load_dotenv()
 class LLM():
     def __init__(self, key) -> None:
         self.llm = ChatOpenAI(
-            openai_api_key=key, model="gpt-4-1106-preview")
+            openai_api_key=key, model="gpt-3.5-turbo-0125")
 
     def __get_parser(self):
         schema = [
@@ -29,15 +30,17 @@ class LLM():
         return StructuredOutputParser.from_response_schemas(schema)
 
     def __get_context(self):
-        context = """You are a music recommendation system that analyzes user music taste and recommends artists and songs that align with their description. You will be provided with a description of the desired type of music and/or a genre/sub-genre, and your tasks are:
-                        - Define the genre name of the provided description. Ensure that this genre/sub-genre exists.
-                        - Generate 2 short paragraphs (total 100 words) that describe its characteristics. The first paragraph will begin with the phrase "Your music taste leans a bit towards <genre>" or similar. The second paragraph may begin with any phrase.
-                        - Give the names of 2 artists which match the description
-                        - Give a short description of each artists' music. Each paragraph has to start with the "is", in reference to the artist.
-                        - Generate three adjectives that best describe the mood of the genre
-                        - Generate the hex color code for a color that matches these adjectives. For example, if the music is happy and upbeat use brighter colours and if it is sad, use dark and muted colours like grey. Make your own decisions for other moods.
-                    If there is a typo in the description try to infer what it means, only if possible. if there are too many typos, don't return a JSON and just say the word "None".
-                    If the description does not make any sense at all, don't return a JSON and just say the word "None". Otherwise, the result should be formatted in JSON and this JSON should be the only output. Provided is are some examples of possible outputs for various descriptions. For future responses, please copy the exact format.
+        context = """You are a music recommendation system that analyzes user music taste and 
+                recommend artists and songs that align with their genre. You will be provided 
+                with a genre name or a description of a kind of music, and your task are:
+                    - Define the genre name of the provided description 
+                    - Generate three adjectives that describe the mood of the genre
+                    - Generate the hex color code for a color that matches the mood
+                    - Generate 2 short paragraphs (total 100 words) that describe the characteristics of the genre. The first paragraph will begins with the phrase "Your music taste leans a bit towards <genre>"
+                    or similar.
+                    - Give the names of 2 trending artists for the genre
+                    - Give a short description of these artists music style. Each paragraph has to
+                    start with "is" as it referred to the artist name.
                 Write your output in json format with sample response:
                     genre: 'Indie Folk'
                     mood: 'uplifting - harmonious - lyrical'
@@ -49,25 +52,23 @@ class LLM():
                     content:[
                         "is known for their energetic and anthemic sound, characterized by powerful vocals, dynamic instrumentals, a fusion of rock, pop, and electronic elements. Their music often features catchy melodies, impactful choruses, and introspective lyrics, creating distinctive and widely appealing sonic signature.",
                         "is renowned for his emotive voice and romantic ballads, often accompanied by lush acoustic instrumentation. His music is deeply rooted in Vietnamese culture, yet it has a modern flair that makes it accessible to a wider audience, both locally and internationally."
-                    ]"""
+                    ]
+                    If the genre name or a description of a kind of music is irrelevant to music, songs, or artists, don't return a JSON and just return the string "None". Only do this as a last resort.
+                """
         return context
 
-
     def analyze(self, genre: str):
-        '''Returns dictionary with content from LLM. If the genre string does not make sense, returns None.'''
         prompt = ChatPromptTemplate.from_messages([("system"), self.__get_context(),
-                                                   ("human"), "Description: {genre}"])
+                                                   ("human"), "{genre}"])
 
         chain = prompt | self.llm
         result = chain.invoke({'genre': genre})
-
-        if result.content == 'None':
-            return None
-        else:
+        try:
             return self.__get_parser().parse(result.content)
+        except langchain_core.exceptions.OutputParserException:
+            return None
 
 
 if __name__ == "__main__":
-    api_key = os.getenv('OPENAPI_KEY')
-    llm = LLM(api_key)
-    print(llm.analyze("artists like twice but less energetic"))
+    x = LLM(os.environ['API_KEY']).analyze("Korean Pop Indie")
+    print(x)
