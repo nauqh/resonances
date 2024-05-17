@@ -1,3 +1,4 @@
+import langchain_core
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
@@ -52,6 +53,7 @@ class LLM():
                         "is known for their energetic and anthemic sound, characterized by powerful vocals, dynamic instrumentals, a fusion of rock, pop, and electronic elements. Their music often features catchy melodies, impactful choruses, and introspective lyrics, creating distinctive and widely appealing sonic signature.",
                         "is renowned for his emotive voice and romantic ballads, often accompanied by lush acoustic instrumentation. His music is deeply rooted in Vietnamese culture, yet it has a modern flair that makes it accessible to a wider audience, both locally and internationally."
                     ]
+                    If the genre name or a description of a kind of music is irrelevant to music, songs, or artists, don't return a JSON and just return the string "None". Only do this as a last resort.
                 """
         return context
 
@@ -61,8 +63,10 @@ class LLM():
 
         chain = prompt | self.llm
         result = chain.invoke({'genre': genre})
-
-        return self.__get_parser().parse(result.content)
+        try:
+            return self.__get_parser().parse(result.content)
+        except langchain_core.exceptions.OutputParserException:
+            return None
 
 
 if __name__ == "__main__":

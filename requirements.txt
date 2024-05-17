@@ -4,4 +4,5 @@ tqdm
 requests
 langchain
 langchain-openai
+pytest
 sqlalchemy
